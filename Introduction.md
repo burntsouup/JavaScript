@@ -31,6 +31,10 @@ How is JS executed?
 
   ![image3](/images/image3.png)
 
+- Your code is parsed, compiled, and executed from top to bottom
+
+  ![image4](/images/image4.jpg)
+
 Dynamic? Weakly Typed?
 
 - JS = (dynamic, interpreted) + weakly typed
