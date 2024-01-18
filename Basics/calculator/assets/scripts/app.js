@@ -2,15 +2,17 @@
 const defaultResult = 10;
 let currentResult = defaultResult;
 
-let calcDescription = `The result \n is ${currentResult}`;
+
 
 
 
 function add(num1, num2) {
     const result = num1 + num2;
-    alert('this is the result ' + result);
+    return result;
 }
 
-add(1, 2);
+currentResult = add(1, 2);
 
+
+let calcDescription = `The result \n is ${currentResult}`;
 outputResult(currentResult, calcDescription);

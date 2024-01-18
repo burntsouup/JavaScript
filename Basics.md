@@ -69,6 +69,8 @@
 
 - *return* - keyword that ends the function execution and specifies a value to be returned to the function caller
 
+- 
+
   ```JavaScript
       function functionName(parameter1, parameter2, ...) {
         // body code
@@ -92,6 +94,8 @@
   - not allowed: starting with numbers, other special characters (e.g. *-*), JS keywords (e.g. *let*)
 
 - declaring:
+
+  - declare variables/constants before you use them
 
     ```JavaScript
     let currentResult;
