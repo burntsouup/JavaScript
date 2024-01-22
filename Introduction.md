@@ -90,16 +90,19 @@ How is JS executed?
             - example 2: Global Scope
 
               introduce a function, however, once called, `this` still references the window object because the GEC is executing the function
+
               ![image9](/images/image9.png)
 
             - example 3: Method Invocation
 
               take the same function, use it as a property (method) on an object. When we call the function on the object, `this` references the object itself
+
               ![image10](/images/image10.png)
 
             - example 4: Constructor Invocation
 
               when a function is called with the `new` keyword to create an instance of an object (CI), the `this` keyword refers to the newly created object
+
               ![image11](/images/image11.png)
 
 
@@ -122,6 +125,7 @@ How is JS executed?
       c. When the execution of a code within an active FEC is done, the engine removes that FEC from the stack, moving onto the next FEC, etc.
 
     - Example:
+    
         ![image5](/images/image5.png)
 
       i. GEC created and pushed to base of stack

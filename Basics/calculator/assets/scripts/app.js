@@ -1,18 +1,11 @@
 
-const defaultResult = 10;
+const defaultResult = 0;
 let currentResult = defaultResult;
 
-
-
-
-
-function add(num1, num2) {
-    const result = num1 + num2;
-    return result;
+function add() {
+    currentResult = currentResult + parseInt(userInput.value);
+    outputResult(currentResult, "test");
 }
 
-currentResult = add(1, 2);
+addBtn.addEventListener('click', add);
 
-
-let calcDescription = `The result \n is ${currentResult}`;
-outputResult(currentResult, calcDescription);
