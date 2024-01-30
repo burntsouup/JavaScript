@@ -32,28 +32,121 @@
 
   - Assignment: =
 
-  - 
+- *Addition Assignment* operator
+
+  ```JavaScript
+    currentResult = currentResult + enteredNumber;
+    // is the same as:
+    currentResult += enteredNumber;
+  ```
+
+- *Increment/Decrement* operators
+
+  ```JavaScript
+    currentResult = currentResult + 1;
+    // is the same as:
+    currentResult++;
+  ```
+
+    :warning: not available for *multiplication* or *division*
+
+- *Increment/Decrement* operators
+
+  ```JavaScript
+    ++currentResult //outputs result after change
+    currentResult++ //outputs result before change
+  ```
 
 ## Data Types
 
-- **Numbers**: integers (1, -3), floats (7.1)
+- **Numbers** - *integers* (1, -3) or *floats* (7.1)
 
-- **String**: text ("", '', or ``)
+- **String** - text ("", '', or ``)
 
   - **string concatenation** - appending one string with another
 
   - **template literal** (``) - allows us to add variables within this scope using ${}
+
+    :warning: anything passed within `{}` will be converted to a *string*
 
     ```JavaScript
     const result = 10;
     let desc = `The result is ${result}` ;
     ```
 
-- **Booleans**: true, false
+- **Booleans** - *true* or *false*
 
-- **Objects**: 
+- **Objects** - allows you to group and organize related data; key:value pairs
 
-- **Arrays**: 
+  ```JavaScript
+    const user = {
+      name: "Kyle",
+      age: 30
+    };
+  ```
+
+  - **dot notation** - used to access *properties* (key: value) in an object
+
+    ```JavaScript
+      user.name;  //outputs "Kyle"
+    ```
+
+- **Arrays**: a list of data
+
+  ```JavaScript
+    [1, 3, 5]
+  ```
+
+- **undefined**, **null**, **NaN**
+
+  - **undefined** - default value for uninitialized/declared variables (value that is not assigned to a variable), or when a function doesn't return a value, or when accessing an object property or array element that doesn't exist
+
+    :warning: it is also a **value**
+
+    ```JavaScript
+      let x;  //variable declared but not initialized
+      console.log(x); //outputs undefined
+      
+      function doSomething() {
+        //no return statement, so the function returns undefined
+      }
+      console.log(doSomething());  //outputs undefined
+      
+      let obj = {};
+      console.log(obj.property);  //outputs undefined
+    ```
+
+  - **null** - represents the absence of any object value.  Used to indicate that a variable or object property should have no value
+
+    :warning: it is also a **value**
+
+    ```JavaScript
+        let y = null;
+        console.log(y);  //outputs null
+        
+        let obj = { property: null };
+        console.log(obj.property);  //outputs null
+    ```
+
+    :warning: undefined and null share the same value, but not the same data type
+
+      ```JavaScript
+        undefined == null;  //outputs true
+        undefined === null;  //outputs false
+      ```
+
+- **typeof** - evaluates the data type
+
+  ```JavaScript
+    typeof "Kyle";  //outputs "string"
+    typeof 1.1;  //outputs "number"
+    typeof NaN;  //outputs "number"
+    typeof true;  //outputs "boolean"
+    typeof [1, 2, 3];  //outputs "object"
+    typeof {name: "Kyle", age: 30};  //outputs "object"
+    typeof undefined;  //outputs "undefined"
+    typeof null;  //outputs "object"
+  ```
 
 - Convert data types:
 
@@ -109,8 +202,6 @@
 
 - every function execution is independent from other executions
 
-- there are built-in functions, such as *alert*, that can be called any time
-
 - **return** - keyword that ends the function execution and specifies a value to be returned to the function caller
 
   - :warning: code defined after the *return* statement is NOT executed
@@ -133,9 +224,14 @@
       addBtn.addEventListener('click', add);
       ```
 
+- there are *built-in* functions that can be called at any time. For example: `addEventListener`, `push`, `alert`, etc.
+
+
+  
+
 ## Additional Considerations
 
-- Naming:
+- Naming
 
   - convention: *camelCase*
 
@@ -143,17 +239,70 @@
 
   - not allowed: starting with numbers, other special characters (e.g. *-*), JS keywords (e.g. *let*)
 
-- Declaring:
-
-  - declare variables/constants before you use them
+- Declaring - must declare variables/constants before you use them
 
     ```JavaScript
     let currentResult;
     ```
 
-- Initializing:
+- Initializing
 
     ```JavaScript
     let currentResult = 20;
     ```
+
+- Comments
+
+    ```JavaScript
+    let currentResult // this is a comment
+    ```
+
+    ```JavaScript
+    /*
+      this is a comment
+    */
+    ```
+
+- NaN (Not a Number) - a value that is not a valid number
+
+  ```JavaScript
+    console.log(parseInt("hi!"));  //outputs NaN
+    console.log(Math.sqrt(-2));  //outputs NaN
+    console.log("hi"/5);  //outputs NaN
+  ```
+- Importing scripts more efficiently using **defer** and **async**
+
+  - JS is a **parser blocking resource**; parsing of HTML file is blocked or interrupted to fetch, download, and execute a `<script>` file
+
+  a. Normal execution:
+
+    - JS engine receives the data, loads it, starts parsing, pauses parsing to fetch, download, and execute script, then continues parsing ...
+
+      :warning: this extends the time it takes for content to load
+
+      :warning: placing your `script` in the `<head>` will block parsing of the HTML file. This will increase the time it takes for the user to see content and will result in errors if the script needs to interact with the DOM
+
+      ![image14](/images/image14.png)
+
+      ![image13](/images/image13.png)
+  
+  b. **Defer** attribute
+
+    - the script file is fetched and downloaded while the HTML file is still parsing.  The script file is executed once the HTML file has fully parsed  
+
+      - note - this ensures that if your script needs to interact with the DOM, it will work as expected
+
+      ![image15](/images/image15.png)
+
+      ![image17](/images/image17.png)
+  
+  c. **Async** attribute
+
+    - the script file is fetched and downloaded while the HTML file is still parsing. Once the script is downloaded, it executes immediately, potentially interrupting parsing of the HTML file
+
+      - note - this make sense if your script file doesn't reply on the HTML code (e.g. DOM interactions)
+
+      ![image16](/images/image16.png)
+
+      ![image18](/images/image18.png)
 

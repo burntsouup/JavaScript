@@ -36,15 +36,17 @@ How do webpages work?
 
 How is JS executed?
 
-- **JS Engine** - program that receives source code, parses it, compiles it to binary instructions (machine code) that the CPU understands, and then executes it
+- **JS Engine** - program that receives source code, loads it, parses it, compiles it to binary instructions (machine code) that the CPU understands, and then executes it
 
   ![image3](/images/image3.png)
 
   - built into our browser (V8 in Chrome, SpiderMonkey in Firefox, etc.)
 
-  - note - when scanning HTML file, if the browser encounters a `<script>` tag, it sends it to the JS Engine
+  - engine receives the data, loads it, parses it, evaluates script, compiles script, and then compiles the code
 
     ![image4](/images/image4.jpg)
+
+    ![image13](/images/image13.png)
 
 - How the JS Engine works
 
