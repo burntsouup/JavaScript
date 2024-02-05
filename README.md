@@ -1,2 +1,3 @@
 # JavaScript
-JavaScript study notes
+
+JavaScript study notes.

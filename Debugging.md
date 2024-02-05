@@ -1,8 +1,9 @@
 # Efficient Development and Debugging
 
-## Writing code efficienctly
+## Writing code efficiently
 
-- Shortcuts
+- VSCode Shortcuts
+    - (chrome) Developer tools - `Ctrl+Shift+I`
     - Toggle Line comment - `Ctrl+/`
     - Search - `Ctrl+F`, `Ctrl+Shift+F`
     - Copy Line Up - `Shift+Alt+UpArrow`
@@ -22,47 +23,56 @@
     - Settings - `Ctrl+,`
     - (VSCode) Suggestions - `Ctrl+Space`, `Ctrl+Shift+Space` (parameters)
 
+## Resources
 
+- [MDN unofficial JS documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
+## Debugging
 
+:warning: read error messages
 
-    
+- use `console.log()` to gain insights into your code
 
-Help
+- use the browser debugging tools
 
-Debugging
+- use your IDE for debugging
 
-Debug code
-    Actually read and utilize the error message
-    Use console.log() to gain insight into code flow
+- **Breakpoints** - pause code execution to examine what's going on
 
-Types
-    1. Web page doesnt work at all, error message
-        IDE yells at us telling us of this error
-        if the IDE does not surface an error but your web page isnt working propertly, then refer to the Console tab, within the Developer Tools, to view the error
-            we can even see the source code, with the error highlighted, within Developer Tools!
+    - Debugging toolbar:
 
-    2. Web page does work but not as expected, no error message
-        Use console.log() to better understand your code flow
+        `Developer tools` > `Sources` tab
 
-Developer Tools, using 'breakpoint'
-    Breakpoint - within the browser (Sources tab), we can break our code, at a certain point in time, by selecting a given line, to ultimately examine it
-        the breakpoint executes all code UP TO the breakpoint, not including the breakpoint line of code
-        breakpoint debugger options:
-            'Resume script execution'
-            'Step over next function call' - move to next line
-            'Step into next function call' - go to function, part of the breakpoint line
-            'Step out of current function'
-            'Step' - combines 'Step over' and 'Step into'
+        - **Resume script execution** - continue to execute code (or until next breakpoint is hit)
 
-            'Scope' - local and global variables listed
+        - **Step** - this will always jump to the next *step*.  If the next step is a function call, it will navigate to the function
 
-            'Call stack' - lists all functions that have been called
-    Conditional Breakpoint - you can create a condition that pauses (breakpoint) your code, solely based on your condition
-    Event Listener Breakpoints - pause (breakpoint) code not based on a given line or condition, but based on an 'event' (e.g. Mouse - click)
+        - **Step over next function call** - jumps to the next line of code.  If a function is called, it won't navigate to the function, instead, it will execute the function call on our behalf
 
-    Note - you can make changes to your code (Sources tab) to test/debug and this wont change your actual original code
+        - **Step into next function call**
 
-VSCode 'JavaScript Debugger' extension
-    we can set breakpoints within VSCode and use same functionalities we saw within browser
-    'Debug Console' also opens, within the terminal, that outputs logs and allows you to evaluate expressions at debugging runtime
+        - **Step out of current function**
+
+    - **Call Stack** - shows the Execution Context(s), while pointing to the active context
+
+    - **Local & Global scope** - current variables
+
+    - **Watch** - add an expression to see how the execution changes something
+
+    ![image19](/images/image19.png)
+
+    - **Conditional Breakpoints** - stop execution only when some condition is met
+
+        ![image20](/images/image20.png)
+
+    - **Event Listener Breakpoints** - pause execution based on Event Listeners we've added in our code
+
+        ![image21](/images/image21.png)
+
+- VSCode debugger
+
+    :warning: install JavaScript Debugger extension
+
+    `F5` or `Run` > `Start Debugging`
+
+    ![image22](/images/image22.png)

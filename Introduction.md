@@ -11,7 +11,6 @@ What is JavaScript?
 - Originally, called 'LiveScript' but renamed due to the popularity of Java, at the time  
 
   - note - JS is independent of Java
-  - [MDN unofficial JS documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
   
 How do webpages work?
 
@@ -207,6 +206,8 @@ History of JS
 - 2006 - 2011 Microsoft joined efforts to help develop
 
 - ECMA runs a language called ECMAScript
+
+- [ECMA Standard](https://ecma-international.org/publications-and-standards/standards/ecma-262/)
 
 - ECMAScript is implemented by browser vendors as JS
 
