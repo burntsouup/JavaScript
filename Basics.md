@@ -20,7 +20,7 @@
     const totalUsers = 15;
     ```
 
-    :warning: capitalize global constants
+    :warning: typically we capitalize global constants
 
 ## Operators
 
@@ -28,34 +28,35 @@
 
 - Types:
 
-  - Math: +, -, *, /, **, % (modulus; divide and yield remainder)
+  - Arithmetic: `+ - * / ** %`
 
-  - Assignment: =
+    - *Increment/Decrement* operators
 
-- *Addition Assignment* operator
+      ```JavaScript
+        currentResult = currentResult + 1;
+        // is the same as:
+        currentResult++;
+      ```
 
-  ```JavaScript
-    currentResult = currentResult + enteredNumber;
-    // is the same as:
-    currentResult += enteredNumber;
-  ```
+      :warning: not available for *multiplication* or *division*
 
-- *Increment/Decrement* operators
+  - Assignment: `=`
 
-  ```JavaScript
-    currentResult = currentResult + 1;
-    // is the same as:
-    currentResult++;
-  ```
+    - *Addition Assignment*:
 
-    :warning: not available for *multiplication* or *division*
+      ```JavaScript
+        currentResult = currentResult + enteredNumber;
+        // is the same as:
+        currentResult += enteredNumber;
+      ```
 
-- *Increment/Decrement* operators
+      :warning: also applies to: `-= *= /= %= **=`
 
-  ```JavaScript
-    ++currentResult //outputs result after change
-    currentResult++ //outputs result before change
-  ```
+  - [Comparison](/Control%20Structures.md): `== === != !== > < >= <= ?`
+
+  - [Logical](/Control%20Structures.md): `&& || !`
+
+  - [Operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence)
 
 ## Data Types
 
@@ -74,7 +75,7 @@
     let desc = `The result is ${result}` ;
     ```
 
-- **Booleans** - *true* or *false*
+- **Booleans** - *true* or *false*; used for conditional statements
 
 - **Objects** - allows you to group and organize related data; key:value pairs
 
