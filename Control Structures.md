@@ -2,7 +2,7 @@
 
 *refer to calculator app within the [Basics folder](/Basics/calculator/)
 
-*refer to calculator app within the [Control Structures folder](/ControlStructures/monsterKiller/)
+*refer to Monster Killer app within the [Control Structures folder](/ControlStructures/monsterKiller/)
 
 ## Conditional Statements
 
@@ -25,6 +25,23 @@
         // if condition1 is false but condition2 is true, then this code is executed
     } else {
         // if condition1 and condition2 are false, then this code is executed
+    }
+    ```
+
+- `switch case statement`
+
+    :warning: an alternative to the `if elseif statement`
+
+    ```JavaScript
+    switch (expression) {
+        case x:
+            // execute this code statement if the expression equates (===) to this case value
+            break;  // stops all execution within this switch block
+        case y:
+            // code block
+            break;
+        default:
+            // execute this code if none of the cases are met
     }
     ```
 
@@ -98,6 +115,50 @@
 
             :warning: AND and OR doesn't return a boolean value, instead, they are used to compare conditions that can return boolean values
 
+            :warning: if the OR operator is used for assignment:
+
+            - if one operand is true/truthy and the other is false/falsy, then the true/truthy operand is returned
+                
+            - if both operands are true/truthy, then the left operand is returned
+                
+            - if both operands are false/falsy, then the right operand is returned
+
+            - Examples:
+
+                ```JavaScript
+                const a1 = false || "car"; // returns car
+                ```
+
+                ```JavaScript
+                const a2 = "bat" || "car"; // returns bat
+                ```
+
+                ```JavaScript
+                const a3 = "" || 0; // returns 0
+                ```
+
+            :warning: if the AND operator is used for assignment:
+
+            - if one operand is true/truthy and the other is false/falsy, then the false/falsy operand is returned
+                
+            - if both operands are true/truthy, then the right operand is returned
+                
+            - if both operands are false/falsy, then the left operand is returned
+            
+            - Examples:
+
+                ```JavaScript
+                const a3 = "cat" && "dog"; // returns dog
+                ```
+
+                ```JavaScript
+                const a4 = 0 && "car"; // returns 0
+                ```
+
+                ```JavaScript
+                const a5 = "" && 0; // returns ""
+                ```
+
         - **NOT** (`!`)
 
             - NOT example - `!expr1` returns `false` if the operand is true
@@ -114,8 +175,87 @@
 
             - falsy values: `false`, `0`, `""` (empty string), `NaN`, `Null`, `undefined`
 
-            - Example:
+            :warning: use the `!!` operator to convert a truthy/falsy value to a real boolean (true/false) value
 
-                ```JavaScript
-                !enteredNumber //if enteredNumber is falsy (0), ! returns true
-                ```
+            ```JavaScript
+            const userInput = ""; // returns a falsy value
+            const isValidInput = !!userInput; // returns false
+            ```
+
+- **Ternary (Conditional) Operator**
+
+    - a concise alternative way to writing an `if statement`
+
+        ```JavaScript
+        condition ? expressionIfTrue : expressionIfFalse
+        ```
+
+        :warning: great way of returning some value that could be stored in a variable or constant
+
+## Loops
+
+- run the same code multiple times
+
+- types:
+
+    - **for** - executes code for a certain number of times, based on a condition being true
+
+        ```JavaScript
+        for (initialization; condition; increment) {
+            // code statement to execute if condition holds true
+        }
+        ```
+
+        ```JavaScript
+        for (let i=0; i<3; i++) {
+            console.log(i);
+        }
+        ```
+
+    - **for-of** - executes code for every element of an iterable object (e.g. an array or a string)
+
+        ```JavaScript
+        for (variable of iterable) {
+            // code statement to execute
+        }
+        ```
+
+        ```JavaScript
+        const cars = ["Subaru", "BMV", "Lexus"];
+        for (const el of cars) {
+            console.log(el); // outputs Subaru, BMW, Lexus
+        }
+        ```
+
+    - **for-in** - executes code for every key in an object
+
+        ```JavaScript
+        for (variable in object) {
+            // code statement to execute
+        }
+        ```
+
+        ```JavaScript
+        const person = {name: "John", lastName: "Smith", age: 30};
+        for (const key in person) {
+            console.log(key); // outputs name, lastName, age
+            console.log(person[key]); // outputs John, Smith, 30
+        }
+        ```
+
+    - **while** - executes code while a condition holds true
+
+        
+        ```JavaScript
+        while (condition) {
+            // code statement to execute
+        }
+        ```
+
+        ```JavaScript
+        let i = 0;
+        while (i < 10) {
+            console.log(i);
+            i++;
+        }
+        ```

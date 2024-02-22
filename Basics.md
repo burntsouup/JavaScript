@@ -264,6 +264,32 @@
     */
     ```
 
+- Expressions vs Statements:
+
+  - Expression - code that produces a value
+
+    Examples:
+
+      - `1` produces `1`
+
+      - `"John"` produces `"John"`
+
+      - `2 * 3` produces `6`
+
+      - `a > 10` produces `true` or `false`
+
+      - `isHappy ? `:smile:` : `:worried: produces an emoji
+
+  - Statement - the rigid structure that holds our program together. Statements have room for expressions
+
+    Examples:
+
+      - `let hi = /* some expression */`
+
+      - an `if statement`
+
+  :warning: if you're unsure, use `console.log(/* code to test */)`.  If it runs, then the code is an expression, if it doesn't, then the code is a statement (or just invalid code)
+
 - NaN (Not a Number) - a value that is not a valid number
 
   ```JavaScript
