@@ -113,7 +113,23 @@ function writeToLog(event, value, monsterHealth, playerHealth) {
 
 //8b
 function logHandler() {
-    console.log(battleLog);
+    // Option 1: for loop
+    // for (let i=0; i<battleLog.length; i++) {
+    //     console.log(battleLog[i]);
+    // }
+    // Option 2: for-of loop 
+    // for (const el of battleLog) {
+    //     console.log(el);
+    // }
+    // Option 3: for-of and for-in loops
+    let i = 0;
+    for (const el of battleLog) {
+        console.log(`#${i}`);
+        for (const key in el) {
+            console.log(`${key} >>> ${el[key]}`);
+        }
+        i++;
+    }
 }
 
 //7b

@@ -245,7 +245,6 @@
 
     - **while** - executes code while a condition holds true
 
-        
         ```JavaScript
         while (condition) {
             // code statement to execute
@@ -258,4 +257,22 @@
             console.log(i);
             i++;
         }
+        ```
+
+    - **do...while** - executes code until the condition evaluates to false
+
+        :warning: code executes at least once and only repeats if the following condition is true
+
+        ```JavaScript
+        do {
+            // code statement to execute
+        } while (condition);
+        ```
+
+        ```JavaScript
+        let i = 0;
+        do {
+            i += 1;
+            console.log(i);
+        } while (i < 5);
         ```
