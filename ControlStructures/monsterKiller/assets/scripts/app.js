@@ -4,19 +4,35 @@ const MONSTER_ATTACK_VALUE = 14; //4
 const STRONG_ATTACK_VALUE = 17; //3
 const HEAL_VALUE = 20; //2
 
-const enteredValue = prompt("enter a value buddy",);  // prompt user to enter player/monster health values
-
-let chosenMaxLife = parseInt(enteredValue);
-// if chosenMaxLife is not a number or if it's a negative number, then set chosenMaxLife value to a default value of 100
-if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
+let chosenMaxLife;
+try {  //9b
+    chosenMaxLife = getMaxLifeValues();
+} catch (error) {  // if an error is thrown, then this code will execute (console the ('throw' value) error, send an alert, and set value of chosenMaxLife to 100)
+    console.log(error);
+    alert("BRO that's not a number! The default max life is set to 100");
     chosenMaxLife = 100;
 }
+
 let currentMonsterHealth = chosenMaxLife;
 let currentPlayerHealth = chosenMaxLife;
 let hasBonusLife = true;
 let battleLog = [];
 
 adjustHealthBars(chosenMaxLife);  // adjust progress bar UI - monster health and player health 'max' life and actual 'value' set to chosenMaxLife
+
+//9a - error handling
+function getMaxLifeValues() {
+    const enteredValue = prompt("Enter a value for the max life",);  // prompt user to enter a number (player/monster health values)
+
+    let parsedValue = parseInt(enteredValue);
+
+    // if parsedValue is not a number or if it's a negative number, then 'throw' an error
+    if (isNaN(parsedValue) || parsedValue <= 0) {
+        throw {message: "Dude that's not a number!"};
+    }
+
+    return parsedValue;
+}
 
 //8a - write to log
 function writeToLog(event, value, monsterHealth, playerHealth) {
@@ -129,6 +145,7 @@ function logHandler() {
             console.log(`${key} >>> ${el[key]}`);
         }
         i++;
+        break;
     }
 }
 

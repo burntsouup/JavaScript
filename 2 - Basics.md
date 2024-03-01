@@ -6,7 +6,7 @@
 
 - **Variable** - data container/storage where the value can change
 
-  - declare using **let** keyword
+  - declare using `let` keyword
 
     :warning: declare only once
 
@@ -28,9 +28,9 @@
 
 - Types:
 
-  - Arithmetic: `+ - * / ** %`
+  - **Arithmetic**: `+ - * / ** %`
 
-    - *Increment/Decrement* operators
+    - **Increment/Decrement** operators
 
       ```JavaScript
         currentResult = currentResult + 1;
@@ -40,9 +40,9 @@
 
       :warning: not available for *multiplication* or *division*
 
-  - Assignment: `=`
+  - **Assignment**: `=`
 
-    - *Addition Assignment*:
+    - **Addition Assignment**:
 
       ```JavaScript
         currentResult = currentResult + enteredNumber;
@@ -60,9 +60,9 @@
 
 ## Data Types
 
-- **Numbers** - *integers* (1, -3) or *floats* (7.1)
+- **Numbers** - *integers* (`1`, `-3`) or *floats* (`7.1`)
 
-- **String** - text ("", '', or ``)
+- **String** - text (`""`, `''`, or ``)
 
   - **string concatenation** - appending one string with another
 
@@ -75,78 +75,78 @@
     let desc = `The result is ${result}` ;
     ```
 
-- **Booleans** - *true* or *false*; used for conditional statements
+- **Booleans** - `true` or `false`; used for conditional statements
 
 - **Objects** - allows you to group and organize related data; key:value pairs
 
   ```JavaScript
-    const user = {
-      name: "Kyle",
-      age: 30
-    };
+  const user = {
+    name: "Kyle",
+    age: 30
+  };
   ```
 
   - **dot notation** - used to access *properties* (key: value) in an object
 
     ```JavaScript
-      user.name;  //outputs "Kyle"
+    user.name;  //outputs "Kyle"
     ```
 
 - **Arrays**: a list of data
 
   ```JavaScript
-    [1, 3, 5]
+  [1, 3, 5]
   ```
 
 - **undefined**, **null**, **NaN**
 
-  - **undefined** - default value for uninitialized/declared variables (value that is not assigned to a variable), or when a function doesn't return a value, or when accessing an object property or array element that doesn't exist
+  - `undefined` - default value for uninitialized/declared variables (value that is not assigned to a variable), or when a function doesn't return a value, or when accessing an object property or array element that doesn't exist
 
     :warning: it is also a **value**
 
     ```JavaScript
-      let x;  //variable declared but not initialized
-      console.log(x); //outputs undefined
-      
-      function doSomething() {
-        //no return statement, so the function returns undefined
-      }
-      console.log(doSomething());  //outputs undefined
-      
-      let obj = {};
-      console.log(obj.property);  //outputs undefined
+    let x;  //variable declared but not initialized
+    console.log(x); //outputs undefined
+    
+    function doSomething() {
+      //no return statement, so the function returns undefined
+    }
+    console.log(doSomething());  //outputs undefined
+    
+    let obj = {};
+    console.log(obj.property);  //outputs undefined
     ```
 
-  - **null** - represents the absence of any object value.  Used to indicate that a variable or object property should have no value
+  - `null` - represents the absence of any object value.  Used to indicate that a variable or object property should have no value
 
     :warning: it is also a **value**
 
     ```JavaScript
-        let y = null;
-        console.log(y);  //outputs null
-        
-        let obj = { property: null };
-        console.log(obj.property);  //outputs null
+    let y = null;
+    console.log(y);  //outputs null
+    
+    let obj = { property: null };
+    console.log(obj.property);  //outputs null
     ```
 
-    :warning: undefined and null share the same value, but not the same data type
+    :warning: `undefined` and `null` share the same value, but not the same data type
 
       ```JavaScript
-        undefined == null;  //outputs true
-        undefined === null;  //outputs false
+      undefined == null;  //outputs true
+      undefined === null;  //outputs false
       ```
 
-- **typeof** - evaluates the data type
+- `typeof` - evaluates the data type
 
   ```JavaScript
-    typeof "Kyle";  //outputs "string"
-    typeof 1.1;  //outputs "number"
-    typeof NaN;  //outputs "number"
-    typeof true;  //outputs "boolean"
-    typeof [1, 2, 3];  //outputs "object"
-    typeof {name: "Kyle", age: 30};  //outputs "object"
-    typeof undefined;  //outputs "undefined"
-    typeof null;  //outputs "object"
+  typeof "Kyle";  //outputs "string"
+  typeof 1.1;  //outputs "number"
+  typeof NaN;  //outputs "number"
+  typeof true;  //outputs "boolean"
+  typeof [1, 2, 3];  //outputs "object"
+  typeof {name: "Kyle", age: 30};  //outputs "object"
+  typeof undefined;  //outputs "undefined"
+  typeof null;  //outputs "object"
   ```
 
 - Convert data types:
@@ -186,15 +186,15 @@
 - code-on-demand; define isolated code that can be executed at a late point in time ("called")
 
   ```JavaScript
-      function functionName(parameter1, parameter2, ...) {
-        // body code
-      }
+  function functionName(parameter1, parameter2, ...) {
+    // body code
+  }
   ```
 
   ```JavaScript
-      function greetUser(name) {
-        alert('hi ' + name);
-      }
+  function greetUser(name) {
+    alert('hi ' + name);
+  }
   ```
 
 - JS executes our code from top to bottom. However, for functions, they can be *called* even if they've been defined at the end of our code
@@ -203,9 +203,9 @@
 
 - every function execution is independent from other executions
 
-- **return** - keyword that ends the function execution and specifies a value to be returned to the function caller
+- `return` - keyword that ends the function execution and specifies a value to be returned to the function caller
 
-  - :warning: code defined after the *return* statement is NOT executed
+  - :warning: code defined after the `return` statement is NOT executed
 
 - **global** vs **local** (block) **scope**
   
@@ -219,7 +219,7 @@
 
     - we don't want the JS Engine to execute a function right away; call the function without any parameters and `()`
 
-    - example - only execute the *add* function when the button is clicked
+    - example - only execute the `add` function when the button is clicked
 
       ```JavaScript
       addBtn.addEventListener('click', add);
@@ -227,12 +227,9 @@
 
 - there are *built-in* functions that can be called at any time. For example: `addEventListener`, `push`, `alert`, etc.
 
-
-  
-
 ## Additional Considerations
 
-- Naming
+- **Naming**
 
   - convention: *camelCase*
 
@@ -240,19 +237,19 @@
 
   - not allowed: starting with numbers, other special characters (e.g. *-*), JS keywords (e.g. *let*)
 
-- Declaring - must declare variables/constants before you use them
+- **Declaring** - must declare variables/constants before you use them
 
     ```JavaScript
     let currentResult;
     ```
 
-- Initializing
+- **Initializing**
 
     ```JavaScript
     let currentResult = 20;
     ```
 
-- Comments
+- **Comments**
 
     ```JavaScript
     let currentResult // this is a comment
@@ -264,9 +261,9 @@
     */
     ```
 
-- Expressions vs Statements:
+- **Expressions vs Statements**:
 
-  - Expression - code that produces a value
+  - **Expression** - code that produces a value
 
     Examples:
 
@@ -280,7 +277,7 @@
 
       - `isHappy ? `:smile:` : `:worried: produces an emoji
 
-  - Statement - the rigid structure that holds our program together. Statements have room for expressions
+  - **Statement** - the rigid structure that holds our program together. Statements have room for expressions
 
     Examples:
 
@@ -290,14 +287,14 @@
 
   :warning: if you're unsure, use `console.log(/* code to test */)`.  If it runs, then the code is an expression, if it doesn't, then the code is a statement (or just invalid code)
 
-- NaN (Not a Number) - a value that is not a valid number
+- `NaN` (Not a Number) - a value that is not a valid number
 
   ```JavaScript
     console.log(parseInt("hi!"));  //outputs NaN
     console.log(Math.sqrt(-2));  //outputs NaN
     console.log("hi"/5);  //outputs NaN
   ```
-- Importing scripts more efficiently using **defer** and **async**
+- Importing scripts more efficiently using `defer` and `async`
 
   - JS is a **parser blocking resource**; parsing of HTML file is blocked or interrupted to fetch, download, and execute a `<script>` file
 
@@ -313,7 +310,7 @@
 
       ![image13](/images/image13.png)
   
-  b. **Defer** attribute
+  b. `Defer` attribute
 
     - the script file is fetched and downloaded while the HTML file is still parsing.  The script file is executed once the HTML file has fully parsed  
 
@@ -323,7 +320,7 @@
 
       ![image17](/images/image17.png)
   
-  c. **Async** attribute
+  c. `Async` attribute
 
     - the script file is fetched and downloaded while the HTML file is still parsing. Once the script is downloaded, it executes immediately, potentially interrupting parsing of the HTML file
 
@@ -332,4 +329,3 @@
       ![image16](/images/image16.png)
 
       ![image18](/images/image18.png)
-

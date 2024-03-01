@@ -276,3 +276,46 @@
             console.log(i);
         } while (i < 5);
         ```
+
+    - **break** - terminates the current loop
+
+        ```JavaScript
+        // logging the next item of an array on function call
+        const array = ['a', 'b', 'c'];
+
+        let prevLogIndex;
+        function log() {
+            let loopIndex = 0;
+            for (item of array) {
+                if ((!prevLogIndex && prevLogIndex !== 0) || prevLogIndex < loopIndex) {
+                console.log(array[loopIndex]);
+                prevLogIndex = loopIndex;
+                break;
+                }
+                loopIndex++;
+            }
+        };
+
+        log();  // outputs 'a'
+        log();  // outputs 'b'
+        log();  // outputs 'c'
+        ```
+
+    - **continue** - terminates one iteration in the loop based on some condition, and then continues with the next iteration in the loop
+
+        ```JavaScript
+        // let's say we want to output everything but the number 3
+        // since 'break' jumps us out of our code, this won't work
+        for (i=0; i<6; i++) {
+            if (i === 3) {break;}
+            console.log(i);
+        }
+        // outputs 0, 1, 2
+
+        // therefore, we can use 'continue'
+        for (i=0; i<6; i++) {
+            if (i === 3) {continue;}
+            console.log(i);
+        }
+        // outputs 0, 1, 2, 4, 5
+        ```

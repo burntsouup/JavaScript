@@ -1,4 +1,4 @@
-# Efficient Development and Debugging
+# Efficient Development and Debugging and Error Handling
 
 ## Writing code efficiently
 
@@ -28,6 +28,8 @@
 - [MDN unofficial JS documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 ## Debugging
+
+- used to address logical and syntax errors
 
 :warning: read error messages
 
@@ -76,3 +78,39 @@
     `F5` or `Run` > `Start Debugging`
 
     ![image22](/images/image22.png)
+
+## Error Handling
+
+*refer to Monster Killer app within the [Control Structures folder](/ControlStructures/monsterKiller/)
+
+- Yes, we can use debugging tools to understand and fix logical errors, however, some errors cannot be avoided.  For example:
+
+    - user input errors - user enters a string, instead of an expected number
+
+    - network errors - offline server
+
+    - etc.
+
+- Solution:
+
+    - `throw` error - outputs a custom error (throws an exception)
+
+        - the exception can be a string, number, boolean, or an object (most common)
+
+    - `try..catch..finally` - the `try` block of code is executed first.  If this code throws an exception, then the code in the `catch` block will be executed.  If not, then this code will not execute.  Code in the (optional) `finally` block will always execute, whether an exception was thrown or not
+
+        :warning: you expect that an exception could be thrown from code within the `try` block.  You wouldn't include all of your code in the `try` block
+
+        ```JavaScript
+        try {
+            // code to execute
+        } catch (exceptionVariable) {
+            // code that executes if an exception is thrown in the 'try' block
+        } finally {
+            // codes that executes whether an exception was thrown or not
+        }
+        ```
+
+        :warning: `exceptionVariable` (optional) - holds the exception value; typically the value specified by the `throw` statement
+
+        :warning: use the `finally` block to make your script fail gracefully

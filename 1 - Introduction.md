@@ -69,7 +69,7 @@ How is JS executed?
 
             - note - functions can be called even before they're declared in code
 
-            - note - variable declarations are moved to the top of their scope, but NOT their assignments. Variables declared with the *var* keyword are set to *undefined* and will output *undefined*, prior to assignment (*let* or *const* declarations would output a ReferenceError)
+            - note - variable declarations are moved to the top of their scope, but NOT their assignments. Variables declared with the `var` keyword are set to `undefined` and will output `undefined`, prior to assignment (`let` or `const` declarations would output a ReferenceError)
 
               ![image6](/images/image6.png)
 
@@ -131,15 +131,15 @@ How is JS executed?
 
       i. GEC created and pushed to base of stack
 
-      ii. *name* variable and *first*, *second*, *third* function declarations stored in the GEC VO
+      ii. `name` variable and `first`, `second`, `third` function declarations stored in the GEC VO
 
-      iii. FEC created for the *first* function call. This context is placed on top of the stack, becoming the "active" context, and will be executed
+      iii. FEC created for the `first` function call. This context is placed on top of the stack, becoming the "active" context, and will be executed
 
-      iv. within the *first* FEC, var a = "Hi!" is stored in the FEC (not the GEC). *second* function is called, creating a new FEC, pushing it to the top of the stack, pausing the execution of the *first* FEC
+      iv. within the `first` FEC, var a = "Hi!" is stored in the FEC (not the GEC). `second` function is called, creating a new FEC, pushing it to the top of the stack, pausing the execution of the `first` FEC
 
-      v. the now active *second* FEC stores the var b = "Hey!" and then invokes the *third* function call. This creates a new active FEC on the stack
+      v. the now active `second` FEC stores the `var b = "Hey!"` and then invokes the `third` function call. This creates a new active FEC on the stack
 
-      vi. within the *third* FEC, the var c = "Hello!" is stored and a message is logged to the console. The *third* FEC has performed all tasks (*returns*), so it is removed from the stack, making the *second* FEC the new active context
+      vi. within the `third` FEC, the `var c = "Hello!"` is stored and a message is logged to the console. The `third` FEC has performed all tasks (*returns*), so it is removed from the stack, making the `second` FEC the new active context
 
       ... etc. ...
 
