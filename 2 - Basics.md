@@ -237,16 +237,20 @@
 
   - not allowed: starting with numbers, other special characters (e.g. *-*), JS keywords (e.g. *let*)
 
-- **Declaring** - must declare variables/constants before you use them
+- **Declaring** - declare variables/constants before you use them
 
     ```JavaScript
     let currentResult;
     ```
+  
+  :warning: **sloppy mode** - even if you don't declare, JS will still run your code with no issue; JS is a forgiving language
+
+  :warning: you can only do this once
 
 - **Initializing**
 
     ```JavaScript
-    let currentResult = 20;
+    currentResult = 20;
     ```
 
 - **Comments**
@@ -294,6 +298,7 @@
     console.log(Math.sqrt(-2));  //outputs NaN
     console.log("hi"/5);  //outputs NaN
   ```
+
 - Importing scripts more efficiently using `defer` and `async`
 
   - JS is a **parser blocking resource**; parsing of HTML file is blocked or interrupted to fetch, download, and execute a `<script>` file
@@ -329,3 +334,18 @@
       ![image16](/images/image16.png)
 
       ![image18](/images/image18.png)
+
+- **Strict mode** - enables a restricted variant of JS (disabling *sloppy mode*)
+
+  - examples of what semantics change: eliminates silent errors by throwing an error, fixes mistakes to optimize JS, prohibits some syntax
+
+  :warning: you can enable strict mode to the entire script or to individual functions
+
+  ```JavaScript
+  userName = "George";  // even though we don't declare this variable, JS will still run our code
+  ```
+
+  ```JavaScript
+  "use strict";
+  userName = "George";  // JS will output an error message
+  ```

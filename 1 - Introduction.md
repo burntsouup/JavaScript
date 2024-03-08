@@ -2,50 +2,101 @@
 
 What is JavaScript?
 
-- JS is a **dynamic**, **weakly typed** programming language **compiled at runtime**
+- JS is a programming language, mostly used for web development
 
-- It can be executed as part of a webpage in a browser or directly on any machine ('host environment')
+- it is **dynamic**, **compiled at runtime (JiT)**
 
-- Created to **make webpages more dynamic** (e.g. change content on a page inside the browser)
+  - it was created to **make webpages more dynamic** (e.g. change content on a page inside the browser)
 
-- Originally, called 'LiveScript' but renamed due to the popularity of Java, at the time  
+  - **dynamic** - code is compiled (translates from a source language to a target language; from JS to machine code) during the execution of the program, at runtime (when the machine's CPU interprets and acts on the code instructions).  Also called just-in-time
 
-  - note - JS is independent of Java
-  
+- it is **weakly typed** and multi-paradigm, supporting **event-driven**, **functional**, **imperative**, and **object-oriented** styles
+
+  - **weakly-typed** - data types are assumed automatically. This results in fewer errors, allowing your code to run as expected
+
+- it is a **synchronous**, **single-threaded** language
+
+  - processing one command at a time. For operation 2 to start, operation 1 has to finish
+
+  - A thread has a **call stack** and **memory heap**
+
+- JS can be executed as part of a web browser or, as of more recently, directly on a server (Node.js)
+
+- JS works with many built-in **APIs** (e.g. DOM, Canvas, WebGL, etc.) to enhance the experience (e.g. JS is a synchronous language but is asynchronous with the use of APIs)
+
+History of JS
+
+- (1993) First popular browser, called *Mosaic*, was released.  Those same developers founded Netscape and published an improved browser called the Netscape Navigator (1994)
+
+- (1995) Brendan Eich of Netscape, developed a language that was similar to Java, but easier to work with.  He named this language *Mocha*, then *LiveScript*, and finally *JavaScript*
+
+  - note - due to the popularity of Java at the time, the name JavaScript was used as a marketing ploy
+
+- (1995) Microsoft debuted Internet Explorer which lead to a browser war with Netscape.  Microsoft also re-engineering JavaScript, introducing it's own version of it, called JScript (1996)
+
+- (1996) Netscape submitted JavaScript to ECMA International (European Computer Manufacturing Association) to standardize the language across all browsers.  This led to the release of the [ECMA Standard](https://ecma-international.org/publications-and-standards/standards/ecma-262/) (1997)
+
+  - note - JavaScript is now known as a language that conforms to the ECMAScript standard
+
+- Microsoft gained a dominant position in the browser market.  By the early 2000s, IE's market share reached ~95%.  Therefore, JScript became the de facto standard for web development
+
+- However, over time, this started to change.  JavaScript soon became the most popular client-side language.  Here are a few examples of why:
+
+  - Mozilla (successor of Netscape) released the Firefox browser, which aligned directly with ECMAScript/JavaScript
+
+  - Browser vendors implemented JavaScript engines (Google - V8, Mozilla - SpiderMonkey)
+
+  - (2005) Jesse Garrett released Ajax, a set of web dev technologies to create (dynamic) asynchronous web apps, that were built on JavaScript
+
+  - (2009) Ryan Dahl created Node.js, enabling JavaScript developing outside of the web browser
+
+- JavaScript is currently used by ~98% of all websites
+
+- Many open-source libraries and web frameworks were born, based on JavaScript: React, Angular, jQuery, Vanilla JS, etc.
+
 How do webpages work?
 
-- User visits/interacts with browser through their client/machine
+- User visits/interacts with a browser through their client/machine
 
   - Initial visit - request is sent to the server; a computer where the webpage sits (where the HTML file is posted)
 
-    - Server loads webpage (HTML file) and sends it back to your browser (response)
+  - Server loads webpage (HTML file) and sends it back to your browser (response)
 
-    ![image1](/images/image1.png)
+  ![image1](/images/image1.png)
 
 - What if the user clicks on a form on that webpage?
 
   - Triggers a new request (sent from client to server)
 
-    - Server processes request, maybe stores some data in a DB, and then responds back with a new HTML file webpage
+  - Server processes request, maybe stores some data in a DB, and then responds back with a new HTML file webpage
 
 - JS makes the client/browser experience more "reactive"
+
   - E.g. instead of sending a second response, the originally loaded page could, instead, dynamically change to meet the needs of the user
 
   ![image2](/images/image2.png)
 
-How is JS executed?
+How is JS code executed?
 
-- **JS Engine** - program that receives source code, loads it, parses it, compiles it to binary instructions (machine code) that the CPU understands, and then executes it
+- **JS Engine** - a program that receives source code, loads it, parses it, compiles it to binary instructions (machine code) that the CPU understands, and then executes it
 
   ![image3](/images/image3.png)
 
-  - built into our browser (V8 in Chrome, SpiderMonkey in Firefox, etc.)
+- JS engine is defined by an **Interpreter** and a **Compiler**
 
-  - engine receives the data, loads it, parses it, evaluates script, compiles script, and then compiles the code
+  - **Interpreter** - loads source code, parses, and translates it to bytecode (machine code; x86, ARM, etc.), starting the execution
 
-    ![image4](/images/image4.jpg)
+  - **Compiler** - Interpreter hands the machine code to the Compiler that then executes the code whilst the code is being received, at runtime (called **just-in-time**)
 
-    ![image13](/images/image13.png)
+  - Compiled machine code is handed off to your computer to execute the code
+
+    ![image23](/images/image23.png)
+
+- built into our browser (V8 in Chrome, SpiderMonkey in Firefox, etc.)
+
+- JS engine receives the data, loads it, parses it, evaluates script, compiles script, and then compiles the code
+
+  ![image13](/images/image13.png)
 
 - How the JS Engine works
 
@@ -53,7 +104,7 @@ How is JS executed?
 
     - **Global Execution Context** (GEC) - when the engine receives a script file, by default, it creates a single EC, called the GEC. This is where all code (variables and functions) that are not inside a function are stored and executed
 
-      - note - the GEC for the browser is the `window` object. The GEC for a non-browser is the `global` object
+      :warning: the GEC for the browser is the `window` object. The GEC for a non-browser is the `global` object
 
     - **Function Execution Context** (FEC) - whenever a function is called, the engine creates a FEC within the GEC, to execute code within that function
 
@@ -61,31 +112,38 @@ How is JS executed?
 
   - EC phases:
 
-    1. **Creation** (Memory Allocation)
+    :warning: applies to both GEC and FECs
+
+    1. **Creation phase** (Memory Allocation)
 
         a. **Variable Object** - a container within the EC that stores all variables and functions (as key-value pairs)
 
-          - *hoisting* - variable and function declarations are moved to the top of their respective scopes during this phase
+          - **Memory Heap** - where these objects are actually stored
 
-            - note - functions can be called even before they're declared in code
+          - **hoisting** - variable and function declarations are moved to the top of their respective scopes, during this phase, and stored
 
-            - note - variable declarations are moved to the top of their scope, but NOT their assignments. Variables declared with the `var` keyword are set to `undefined` and will output `undefined`, prior to assignment (`let` or `const` declarations would output a ReferenceError)
+            - allows functions to be called even before they're declared in code
 
-              ![image6](/images/image6.png)
+            :warning: variables and functions within globally declared functions are not stored in memory (GEC VO)
+
+            :warning: variable declarations are stored, but they're not initialized values (outputs a *ReferenceError*)
 
         b. **The Scope Chain** - nested Variable Objects, representing scopes for each function; each VO has a reference to a parent scope, forming a chain
 
           - **lexical scoping** - when a function is defined within another function, the inner function has access to code defined in the outer function (called *closure*) and any parent code. However the outer function does not have access to code within the inner function
 
+            :warning: **block scope** - code executes within a defined scope (e.g. within a function's `{}`), blocking external code from executing
+
             ![image7](/images/image7.png)
 
         c. **Setting "this" keyword**
 
-          - `this` - references another value (typically an object), that represents the current EC (either GEC or FEC)
+          - `this` - references another value (typically an object), that represents the current EC (either the GEC or a FEC)
 
             - example 1: Global Scope
+
               ```JavaScript
-              console.log(this)  //this references the window object (browser), since the GEC is executing the function
+              console.log(this)  // "this" references the window object (in the browser), since the GEC is executing the function
               ```
 
             - example 2: Global Scope
@@ -96,7 +154,7 @@ How is JS executed?
 
             - example 3: Method Invocation
 
-              take the same function, use it as a property (method) on an object. When we call the function on the object, `this` references the object itself
+              take the same function, use it as a property (method) on an object. When we *call* the function on the object, `this` references the object itself
 
               ![image10](/images/image10.png)
 
@@ -106,115 +164,104 @@ How is JS executed?
 
               ![image11](/images/image11.png)
 
+    2. **Execution phase** (Code Execution) - code is executed one line at a time, top to bottom (synchronous), only executing the next line once the current line has executed (single-threaded)
 
-    2. **Execution** (Code Execution) - code is executed one line at a time, top to bottom (synchronous), only executing the next line once the current line has executed (single-threaded)
+    :warning: think of both phases as sifting through your code twice
 
-  - How code is executed: - **Call Stack** (EC Stack) 
+  - **Call Stack** (EC Stack) - how code is executed in the Execution phase
   
     - a collection of ECs to be executed
 
+    - follows a *last-in-first-out* principle
+
     - since JS is single-threaded, ECs are created for every event, function call, etc.
 
-    - Steps:
+  - Example 1:
 
-      a. (when the script is loaded) GEC is created first and pushed to stack
+    GEC Creation phase
 
-      b. (GEC VO) Memory is allocated for all function and variable declarations
+    a. (when the script is loaded) GEC is created first and *pushed* to the *call stack*
 
-      b. JS Engine creates an FEC for each function call. Each FEC is placed on top of the stack, of the currently executing EC. The EC at the top of the stack becomes the "active" EC, and will be executed first
+    b. Function and variable declarations, part of the global scope (not part of each function scope), are hoisted and stored in memory (GEC VO)
 
-      c. When the execution of a code within an active FEC is done, the engine removes that FEC from the stack, moving onto the next FEC, etc.
+    GEC Execution phase
 
-    - Example:
-    
-        ![image5](/images/image5.png)
+    c. line by line, variables are initialized and functions are *called*
 
-      i. GEC created and pushed to base of stack
+    d. when a function is *called*, a FEC is created and is *pushed* to the top of the *stack*. The EC at the top of the *stack* becomes the "active" EC, and will be executed first
 
-      ii. `name` variable and `first`, `second`, `third` function declarations stored in the GEC VO
+    FEC Creation phase
 
-      iii. FEC created for the `first` function call. This context is placed on top of the stack, becoming the "active" context, and will be executed
+    e. Function and variable declarations, part of this function scope, are hoisted and stored in memory (FEC VO)
 
-      iv. within the `first` FEC, var a = "Hi!" is stored in the FEC (not the GEC). `second` function is called, creating a new FEC, pushing it to the top of the stack, pausing the execution of the `first` FEC
+    FEC Execution phase
 
-      v. the now active `second` FEC stores the `var b = "Hey!"` and then invokes the `third` function call. This creates a new active FEC on the stack
+    g. once the execution of a code within an active FEC is complete, the engine removes (*pops*) that FEC from the *stack*
 
-      vi. within the `third` FEC, the `var c = "Hello!"` is stored and a message is logged to the console. The `third` FEC has performed all tasks (*returns*), so it is removed from the stack, making the `second` FEC the new active context
+    h. as functions are called, FECs are created and pushed/popped to/from the *stack*
 
-      ... etc. ...
+  - Example 2:
 
-        ![image12](/images/image12.png)
+    a. `first()` function is *called* and *pushed* to the *stack*, but not executed
 
-Dynamic? Weakly Typed?
+    b. `second()` function is *called* and *pushed* to the *stack*, but not executed
 
-- JS = (dynamic, interpreted) + weakly typed
+    c. `third()` function is *called* and *pushed* to the *stack* and is then executed and is *popped* off the *stack*
 
-- Dynamic:
-  - Not pre-compiled, instead parsed and compiled "on the fly" (e.g. in the browser)
-    - Code evaluated and executed at runtime
+    d. `second()` is executed and *popped* off the *stack*
 
-- Code can change at runtime (e.g. type of a variable)
+    e. `first()` is executed and *popped* off the *stack*
 
-- Weakly typed:
+    ![image24](/images/image24.png)
 
-  - Data types are assumed automatically
+    ![image25](/images/image25.png)
 
-  - You don’t define that some variable has to hold a certain value (e.g. in other languages, you need to define the data type in advance)
+  - Example 3:
 
-Executes in a Hosted Environment
+    GEC Creation phase
 
-- JS can be executed in different environments (e.g. browser, server, etc.)
+    a. GEC is created and *pushed* to the *stack*
 
-- Browser-side:
+    b. `name` variable and `first()`, `second()`, `third()` function declarations are stored in memory (GEC VO)
 
-  - JS's origin
+    :warning: `name` variable is declared, but not initialized
 
-  - JS invented to create more dynamic websites by executing in the browser
+    :warning: variables and functions declared within `first()`, `second()`, and `third()` functions are not stored in memory (GEC VO)
 
-  - JS can manipulate HTML code, CSS, send background HTTP requests, etc.
+    GEC Execution phase
 
-  - JS cant access local file system, interact with OS, etc.
+    c. `name` is initialized with the value `Victor`
 
-- Server-side
+    d. `first()` function is called, creating a FEC. This context is placed on top of the *stack*, becoming the "active" context, and will be executed
 
-  - Google's V8 JS engine was extracted to run JS anywhere (not just in the browser); this tool is called 'Node.js'
+    FEC Creation phase (`first()`)
 
-  - Node.js can be executed on any machine and is therefore often used to build web backends
+    e. functions and variables within `first()` will be hoisted and stored in memory (FEC VO) (e.g. `var a`)
 
-  - Node.js can access the local file system, interact with OS, etc.
+    FEC Execution phase (`first()`)
 
-  - Node.js cant manipulate HTML or CSS
+    f. `var a` is initialized and set to the value of `Hi!`. `second()` function is called, creating a new FEC, pushing it to the top of the *stack* to be executed, pausing the execution of the `first()` FEC
 
-- note - syntax is the same for both environments
+    FEC Creation phase (`second()`)
 
-JS vs Java
+    g. functions and variables within `second()` will be hoisted and stored in memory (FEC VO) (e.g. `var b`)
 
-- Completely independent; syntax and principles
+    FEC Execution phase (`second()`)
 
-- Java doesn’t run in the browser
+    h. `var b` is initialized and set to the value of `Hey!`. `third()` function is called, creating a new FEC, pushing it to the top of the *stack* to be executed, pausing the execution of the `second()` FEC
 
-- Java is object-oriented and strongly typed
+    FEC Creation phase (`third()`)
 
-History of JS
+    i. functions and variables within `third()` will be hoisted and stored in memory (FEC VO) (e.g. `var c`)
 
-- 1995 Netscape introduced 'LiveScript' which was the original name of JS
+    FEC Execution phase (`third()`)
 
-- 1996 Microsoft introduced its own version for IE
+    j. `var c` is initialized and set to the value of `Hello!`. `Hello!` is logged to the console. Since all code has executed, the `third()` FEC is remove (*popped*) from the *stack*, making the `second()` FEC the new active context
 
-- Late 1996, JS submitted to ECMA (European Computer Manufacturing Association) to start standardization across all browsers (1997 - 2005)
+    k. `second()` FEC continues execution, logging `Hey!` to the console. Since all code has executed, the `second()` FEC is remove (*popped*) from the *stack*, making the `first()` FEC the new active context
 
-- 2006 - 2011 Microsoft joined efforts to help develop
+    l. `first()` FEC continues execution, logging `Hi!` to the console. Since all code has executed, the `first()` FEC is remove (*popped*) from the *stack*
 
-- ECMA runs a language called ECMAScript
+    ![image5](/images/image5.png)
 
-- [ECMA Standard](https://ecma-international.org/publications-and-standards/standards/ecma-262/)
-
-- ECMAScript is implemented by browser vendors as JS
-
-- JS is the most famous ECMAScript implementation (others include ActionScript and Jscript)
-
-- Browser vendors implement these standards into their JS engines
-
-  - Each browser comes with its own JS engine that also defines which features are supported
-
-- ECMAScript is under active development, therefore so is JS
+    ![image12](/images/image12.png)
