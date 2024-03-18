@@ -3,35 +3,54 @@
 ## Writing code efficiently
 
 - VSCode Shortcuts
+
     - (chrome) Developer tools - `Ctrl+Shift+I`
+
     - Toggle Line comment - `Ctrl+/`
+
     - Search - `Ctrl+F`, `Ctrl+Shift+F`
+
     - Copy Line Up - `Shift+Alt+UpArrow`
+
     - Move Line Up - `Alt+UpArrow`
+
     - Expand Selection - `Shift+Alt+RightArrow`
+
     - Navigate down page - `Ctrl+DownArrow`
+
     - Split editor - `Ctrl+\`
+
     - Toggle sidebar - `Ctrl+B`
+
     - Select Next Occurrence - `Ctrl+D`
+
     - Preview markdown - `Ctrl+Shift+V`
+
     - Replace - `Ctrl+H`
+
     - Multiple cursors - `Ctrl+Alt+UpArrow`
+
     - Toggle Terminal - `Ctrl+backtick`
+
     - New window - `Ctrl+Shift+N`
+
     - Command palette - `Ctrl+Shift+P`
+
     - Quick Open - `Ctrl+P`
+
     - Settings - `Ctrl+,`
+
     - (VSCode) Suggestions - `Ctrl+Space`, `Ctrl+Shift+Space` (parameters)
 
 ## Resources
 
-- [MDN unofficial JS documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+:link: [MDN unofficial JS documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
 ## Debugging
 
 - used to address logical and syntax errors
 
-:warning: read error messages
+- :bulb: read error messages
 
 - use `console.log()` to gain insights into your code
 
@@ -45,21 +64,21 @@
 
         `Developer tools` > `Sources` tab
 
-        - **Resume script execution** - continue to execute code (or until next breakpoint is hit)
+        - `Resume script execution` - continue to execute code (or until next breakpoint is hit)
 
-        - **Step** - this will always jump to the next *step*.  If the next step is a function call, it will navigate to the function
+        - `Step` - this will always jump to the next *step*.  If the next step is a function call, it will navigate to the function
 
-        - **Step over next function call** - jumps to the next line of code.  If a function is called, it won't navigate to the function, instead, it will execute the function call on our behalf
+        - `Step over next function call` - jumps to the next line of code.  If a function is called, it won't navigate to the function, instead, it will execute the function call on our behalf
 
-        - **Step into next function call**
+        - `Step into next function call`
 
-        - **Step out of current function**
+        - `Step out of current function`
 
-    - **Call Stack** - shows the Execution Context(s), while pointing to the active context
+    - `Call Stack` - shows the Execution Context(s), while pointing to the active context
 
-    - **Local & Global scope** - current variables
+    - `Local & Global scope` - current variables
 
-    - **Watch** - add an expression to see how the execution changes something
+    - `Watch` - add an expression to see how the execution changes something
 
     ![image19](/images/image19.png)
 
@@ -73,7 +92,7 @@
 
 - VSCode debugger
 
-    :warning: install JavaScript Debugger extension
+    :bulb: install JavaScript Debugger extension
 
     `F5` or `Run` > `Start Debugging`
 
@@ -81,7 +100,7 @@
 
 ## Error Handling
 
-*refer to Monster Killer app within the [Control Structures folder](/ControlStructures/monsterKiller/)
+:pushpin: refer to Monster Killer app within the [Control Structures folder](/ControlStructures/monsterKiller/)
 
 - Yes, we can use debugging tools to understand and fix logical errors, however, some errors cannot be avoided.  For example:
 
@@ -99,7 +118,7 @@
 
     - `try..catch..finally` - the `try` block of code is executed first.  If this code throws an exception, then the code in the `catch` block will be executed.  If not, then this code will not execute.  Code in the (optional) `finally` block will always execute, whether an exception was thrown or not
 
-        :warning: you expect that an exception could be thrown from code within the `try` block.  You wouldn't include all of your code in the `try` block
+        :bulb: you expect that an exception could be thrown from code within the `try` block.  You wouldn't include all of your code in the `try` block
 
         ```JavaScript
         try {
@@ -111,6 +130,6 @@
         }
         ```
 
-        :warning: `exceptionVariable` (optional) - holds the exception value; typically the value specified by the `throw` statement
+        :bulb: `exceptionVariable` (optional) - holds the exception value; typically the value specified by the `throw` statement
 
-        :warning: use the `finally` block to make your script fail gracefully
+        :bulb: use the `finally` block to make your script fail gracefully

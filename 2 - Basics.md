@@ -1,6 +1,6 @@
 # BASICS
 
-*refer to calculator app within the [Basics folder](/Basics/calculator/)
+:pushpin: refer to calculator app within the [Basics folder](/Basics/calculator/)
 
 ## Variables & Constants
 
@@ -8,7 +8,7 @@
 
   - declare using `let` keyword
 
-    :warning: declare only once
+    :bulb: declare only once
 
     ```JavaScript
     let userName = "John";
@@ -20,7 +20,7 @@
     const totalUsers = 15;
     ```
 
-    :warning: typically we capitalize global constants
+    :bulb: typically we capitalize global constants
 
 ## Operators
 
@@ -38,7 +38,7 @@
         currentResult++;
       ```
 
-      :warning: not available for *multiplication* or *division*
+      :bulb: not available for *multiplication* or *division*
 
   - **Assignment**: `=`
 
@@ -50,13 +50,13 @@
         currentResult += enteredNumber;
       ```
 
-      :warning: also applies to: `-= *= /= %= **=`
+      :bulb: also applies to: `-= *= /= %= **=`
 
   - [Comparison](/Control%20Structures.md): `== === != !== > < >= <= ?`
 
   - [Logical](/Control%20Structures.md): `&& || !`
 
-  - [Operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence)
+  :link: [Operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence)
 
 ## Data Types
 
@@ -68,7 +68,7 @@
 
   - **template literal** (``) - allows us to add variables within this scope using ${}
 
-    :warning: anything passed within `{}` will be converted to a *string*
+    :bulb: anything passed within `{}` will be converted to a *string*
 
     ```JavaScript
     const result = 10;
@@ -86,11 +86,13 @@
   };
   ```
 
-  - **dot notation** - used to access *properties* (key: value) in an object
+  - **dot-notation** - used to access *properties* (key: value) in an object
 
     ```JavaScript
     user.name;  //outputs "Kyle"
     ```
+
+  :pushpin: objects explained in more detail [here](/8%20-%20Objects.md)
 
 - **Arrays**: a list of data
 
@@ -98,11 +100,13 @@
   [1, 3, 5]
   ```
 
+  :pushpin: arrays explained in more detail [here](/7%20-%20Arrays.md)
+
 - **undefined**, **null**, **NaN**
 
   - `undefined` - default value for uninitialized/declared variables (value that is not assigned to a variable), or when a function doesn't return a value, or when accessing an object property or array element that doesn't exist
 
-    :warning: it is also a **value**
+    :bulb: it is also a **value**
 
     ```JavaScript
     let x;  //variable declared but not initialized
@@ -117,9 +121,9 @@
     console.log(obj.property);  //outputs undefined
     ```
 
-  - `null` - represents the absence of any object value.  Used to indicate that a variable or object property should have no value
+  - `null` - represents the absence of any object value. Used to indicate that a variable or object property should have no value
 
-    :warning: it is also a **value**
+    :bulb: it is also a **value**
 
     ```JavaScript
     let y = null;
@@ -129,7 +133,7 @@
     console.log(obj.property);  //outputs null
     ```
 
-    :warning: `undefined` and `null` share the same value, but not the same data type
+    :bulb: `undefined` and `null` share the same value, but not the same data type
 
       ```JavaScript
       undefined == null;  //outputs true
@@ -151,7 +155,7 @@
 
 - Convert data types:
 
-    :warning: a user input will always out a string. What if we want this to be a number?
+    :bulb: a user input will always out a string. What if we want this to be a number?
 
     - `parseInt()` or `+`(*in front of text*) - converts string to integer
 
@@ -159,15 +163,15 @@
 
     - `toString()` - converts number to string
 
-    - note - `+` operator defaults to string concatenation:
+      :bulb: `+` operator defaults to string concatenation:
 
       ```JavaScript
         3 + "3"  // outputs "33"
       ```
 
-      :warning: `-` operator does not support this; outputs `NaN`
+      :bulb: `-` operator does not support this; outputs `NaN`
 
-    - note:
+      :bulb:
 
       ```JavaScript
         3 * "3"  // outputs 9
@@ -183,13 +187,19 @@
 
 ## Functions
 
-- code-on-demand; define isolated code that can be executed at a late point in time ("called")
+- code-on-demand; define isolated code that can be executed at a late point in time
+
+  - declare a function using the `function` keyword
+  
+    :bulb: when you want to use a function, you "call" it
 
   ```JavaScript
   function functionName(parameter1, parameter2, ...) {
     // body code
   }
   ```
+
+    :bulb: **parameters** are variables you specify between `()`. **Arguments** are the values you pass when *calling* a function
 
   ```JavaScript
   function greetUser(name) {
@@ -205,7 +215,7 @@
 
 - `return` - keyword that ends the function execution and specifies a value to be returned to the function caller
 
-  - :warning: code defined after the `return` statement is NOT executed
+  :bulb: code defined after the `return` statement is NOT executed
 
 - **global** vs **local** (block) **scope**
   
@@ -217,7 +227,7 @@
 
 - **indirect** function execution
 
-    - we don't want the JS Engine to execute a function right away; call the function without any parameters and `()`
+    - we don't want the JS Engine to execute a function right away; *call* the function without any parameters and `()`
 
     - example - only execute the `add` function when the button is clicked
 
@@ -226,6 +236,8 @@
       ```
 
 - there are *built-in* functions that can be called at any time. For example: `addEventListener`, `push`, `alert`, etc.
+
+:pushpin: functions explained in more detail [here](/5%20-%20Functions.md)
 
 ## Additional Considerations
 
@@ -237,15 +249,21 @@
 
   - not allowed: starting with numbers, other special characters (e.g. *-*), JS keywords (e.g. *let*)
 
-- **Declaring** - declare variables/constants before you use them
+- **Declaring** - you must declare variables/constants and functions before you use them
 
     ```JavaScript
     let currentResult;
     ```
   
-  :warning: **sloppy mode** - even if you don't declare, JS will still run your code with no issue; JS is a forgiving language
+    ```JavaScript
+    function something() {
+      return 32;
+    }
+    ```
 
-  :warning: you can only do this once
+  :bulb: **sloppy mode** - even if you don't declare, JS will still run your code with no issue; JS is a forgiving language
+
+  :bulb: you can only do this once
 
 - **Initializing**
 
@@ -289,7 +307,7 @@
 
       - an `if statement`
 
-  :warning: if you're unsure, use `console.log(/* code to test */)`.  If it runs, then the code is an expression, if it doesn't, then the code is a statement (or just invalid code)
+  :bulb: if you're unsure, use `console.log(/* code to test */)`.  If it runs, then the code is an expression, if it doesn't, then the code is a statement (or just invalid code)
 
 - `NaN` (Not a Number) - a value that is not a valid number
 
@@ -307,9 +325,9 @@
 
     - JS engine receives the data, loads it, starts parsing, pauses parsing to fetch, download, and execute script, then continues parsing ...
 
-      :warning: this extends the time it takes for content to load
+      :bulb: this extends the time it takes for content to load
 
-      :warning: placing your `script` in the `<head>` will block parsing of the HTML file. This will increase the time it takes for the user to see content and will result in errors if the script needs to interact with the DOM
+      :bulb: placing your `script` in the `<head>` will block parsing of the HTML file. This will increase the time it takes for the user to see content and will result in errors if the script needs to interact with the DOM
 
       ![image14](/images/image14.png)
 
@@ -319,7 +337,7 @@
 
     - the script file is fetched and downloaded while the HTML file is still parsing.  The script file is executed once the HTML file has fully parsed  
 
-      - note - this ensures that if your script needs to interact with the DOM, it will work as expected
+      :bulb: this ensures that if your script needs to interact with the DOM, it will work as expected
 
       ![image15](/images/image15.png)
 
@@ -329,7 +347,7 @@
 
     - the script file is fetched and downloaded while the HTML file is still parsing. Once the script is downloaded, it executes immediately, potentially interrupting parsing of the HTML file
 
-      - note - this make sense if your script file doesn't reply on the HTML code (e.g. DOM interactions)
+      :bulb: this make sense if your script file doesn't reply on the HTML code (e.g. DOM interactions)
 
       ![image16](/images/image16.png)
 
@@ -339,7 +357,7 @@
 
   - examples of what semantics change: eliminates silent errors by throwing an error, fixes mistakes to optimize JS, prohibits some syntax
 
-  :warning: you can enable strict mode to the entire script or to individual functions
+  :bulb: you can enable strict mode to the entire script or to individual functions
 
   ```JavaScript
   userName = "George";  // even though we don't declare this variable, JS will still run our code

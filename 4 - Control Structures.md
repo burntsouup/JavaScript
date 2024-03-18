@@ -1,8 +1,8 @@
 # Control Structures
 
-*refer to calculator app within the [Basics folder](/Basics/calculator/)
+:pushpin: refer to calculator app within the [Basics folder](/Basics/calculator/)
 
-*refer to Monster Killer app within the [Control Structures folder](/ControlStructures/monsterKiller/)
+:pushpin: refer to Monster Killer app within the [Control Structures folder](/ControlStructures/monsterKiller/)
 
 ## Conditional Statements
 
@@ -30,7 +30,7 @@
 
 - `switch case statement`
 
-    :warning: an alternative to the `if elseif statement`
+    :bulb: an alternative to the `if elseif statement`
 
     ```JavaScript
     switch (expression) {
@@ -53,7 +53,7 @@
 
         - `==` (**loose**) **equality** - checks whether two operands are equal, returning `true` or `false`. It converts and compares operands of different types
 
-            :warning: `=` is the assignment operator
+            :bulb: `=` is the assignment operator
 
             ```JavaScript
             // no type conversion
@@ -70,7 +70,7 @@
 
         - `===` **strict equality** - checks whether two operands are equal, returning `true` or `false`. Always considers operands of different types
 
-            :warning: we should use `===` over `==`; we should care about the data type
+            :bulb: we should use `===` over `==`; we should care about the data type
 
             ```JavaScript
             // same type
@@ -85,20 +85,22 @@
 
         - `!==` **strict inequality**
 
-        - **equality** for **objects** and **arrays**
-   
+        - :bulb: **equality** for **objects** and **arrays**
+
             - Scenario 1 - comparing 2 objects/arrays that have the same values, using the `===/==` operator, would return a `false`
+
+                :bulb: both objects/arrays have different memory (heap) allocations
 
                 ```JavaScript
                 person1 = {name: "John"}
                 person2 = {name: "John"}
-                person1 == person2; //returns false
+                person1 === person2; //returns false
                 ```
 
             - Scenario 2 - comparing 2 object/array values that are the same, using the `===/==` operator, would return a `true`
 
                 ```JavaScript
-                person1.name == person2.name; //returns true
+                person1.name === person2.name; //returns true
                 ```
 
         - `>`, `<` greater than, smaller than
@@ -113,14 +115,14 @@
 
             - OR example - `expr1 || expr2` returns `true` if either operand is true
 
-            :warning: AND and OR doesn't return a boolean value, instead, they are used to compare conditions that can return boolean values
+            :bulb: AND and OR doesn't return a boolean value, instead, they are used to compare conditions that can return boolean values
 
-            :warning: if the OR operator is used for assignment:
+            :bulb: if the OR operator is used for assignment:
 
             - if one operand is true/truthy and the other is false/falsy, then the true/truthy operand is returned
-                
+
             - if both operands are true/truthy, then the left operand is returned
-                
+
             - if both operands are false/falsy, then the right operand is returned
 
             - Examples:
@@ -137,14 +139,14 @@
                 const a3 = "" || 0; // returns 0
                 ```
 
-            :warning: if the AND operator is used for assignment:
+            :bulb: if the AND operator is used for assignment:
 
             - if one operand is true/truthy and the other is false/falsy, then the false/falsy operand is returned
-                
+
             - if both operands are true/truthy, then the right operand is returned
-                
+
             - if both operands are false/falsy, then the left operand is returned
-            
+
             - Examples:
 
                 ```JavaScript
@@ -175,7 +177,7 @@
 
             - falsy values: `false`, `0`, `""` (empty string), `NaN`, `Null`, `undefined`
 
-            :warning: use the `!!` operator to convert a truthy/falsy value to a real boolean (true/false) value
+            :bulb: use the `!!` operator to convert a truthy/falsy value to a real boolean (true/false) value
 
             ```JavaScript
             const userInput = ""; // returns a falsy value
@@ -190,7 +192,7 @@
         condition ? expressionIfTrue : expressionIfFalse
         ```
 
-        :warning: great way of returning some value that could be stored in a variable or constant
+        :bulb: great way of returning some value that could be stored in a variable or constant
 
 ## Loops
 
@@ -261,7 +263,7 @@
 
     - **do...while** - executes code until the condition evaluates to false
 
-        :warning: code executes at least once and only repeats if the following condition is true
+        :bulb: code executes at least once and only repeats if the following condition is true
 
         ```JavaScript
         do {
