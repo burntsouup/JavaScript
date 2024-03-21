@@ -1,6 +1,6 @@
 # Efficient Development and Debugging and Error Handling
 
-## Writing code efficiently
+### Writing code efficiently
 
 - VSCode Shortcuts
 
@@ -42,11 +42,11 @@
 
     - (VSCode) Suggestions - `Ctrl+Space`, `Ctrl+Shift+Space` (parameters)
 
-## Resources
+### Resources
 
 :link: [MDN unofficial JS documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 
-## Debugging
+### Debugging
 
 - used to address logical and syntax errors
 
@@ -98,7 +98,7 @@
 
     ![image22](/images/image22.png)
 
-## Error Handling
+### Error Handling
 
 :pushpin: refer to Monster Killer app within the [Control Structures folder](/ControlStructures/monsterKiller/)
 

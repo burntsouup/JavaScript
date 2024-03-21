@@ -1,6 +1,6 @@
 # INTRODUCTION
 
-## What is JavaScript?
+### What is JavaScript?
 
 - JS is a programming language, mostly used for web development
 
@@ -24,7 +24,7 @@
 
 - JS works with many built-in **Web APIs** (e.g. DOM, Canvas, WebGL, etc.) to enhance the experience (e.g. JS is a synchronous language but can be asynchronous with the use of APIs)
 
-## History of JS
+### History of JS
 
 - (1993) First popular browser, called *Mosaic*, was released.  Those same developers founded Netscape and published an improved browser called the Netscape Navigator (1994)
 
@@ -54,7 +54,7 @@
 
 - Many open-source libraries and web frameworks were born, based on JavaScript: React, Angular, jQuery, Vanilla JS, etc.
 
-## How do webpages work?
+### How do webpages work?
 
 - User visits/interacts with a browser through their client/machine
 
@@ -76,7 +76,7 @@
 
   ![image2](/images/image2.png)
 
-## How is JS code executed?
+### How is JS code executed?
 
 - **JS Engine** - a program that receives source code, loads it, parses it, compiles it to binary instructions (machine code) that the CPU understands, and then executes it
 
@@ -130,7 +130,7 @@
 
   ![image13](/images/image13.png)
 
-## How the JS Engine works
+### How the JS Engine works
 
 - **Execution Context** (EC) - environment where code is executed
 
@@ -254,29 +254,29 @@
 
   - Example - JS is synchronous but can be asynchronous with the help of web APIs
 
-    1. function `message()` is *called*, calling the `setTimeout()` function. Both are *pushed* to the *stack*
+      1. function `message()` is *called*, calling the `setTimeout()` function. Both are *pushed* to the *stack*
 
-    2. the callback function passed to `setTimeout()` (`console.log("hello from callback")`) is added/registered to the Web API
+      2. a callback function is passed to `setTimeout()` and is added/registered to the Web API
 
-    3. `message()` and `setTimeout()` are *popped* off the *stack*
+      3. `setTimeout()` and then `message()` are *popped* off the *stack*
   
-    4. `boo()` function is *called*, *pushed* to the *stack*, and executes, logging `"Boo!"`
+      4. while the `setTimeout()` timer runs, function `boo()` is *called*, *pushed* to the *stack*, and executes, logging `"Boo!"`. `boo()` is then popped off the stack
 
-    5. after the timeout timer runs, the callback gets added to the **task queue** (*callback queue*)
+      5. after the `setTimeout()` timer runs for 2s, the callback gets added to the **task queue** (*callback queue*)
 
-    6. once the *stack* is empty, the **Event Loop** takes the task, *pushing* it onto the *stack* to be executed
-  
-        :bulb: **task queue** is a data structure that, unlike the Call Stack that follows a LIFO approach, follows a **first-in-first-out** approach
+      6. once the *stack* is empty, the **Event Loop** takes the task, *pushing* it onto the *stack* to be executed. The callback function is then executed, logging `"hello from callback"`
 
-        :bulb: **Event Loop** simply takes a task and pushes it to the *stack*, when empty. It runs in iterations (***ticks***). Event Loop won't run until a *tick* has completed
+          :bulb: **task queue** is a data structure that, unlike the Call Stack that follows a LIFO approach, follows a **first-in-first-out** approach
 
-        ![image28](/images/image28.png)
+          :bulb: **Event Loop** simply takes a task and pushes it to the *stack*, when empty. It runs in iterations (***ticks***). Event Loop won't run until a *tick* has completed
 
-        ![image29](/images/image29.png)
+          ![image28](/images/image28.png)
 
-        :link: [Similar example here](https://towardsdev.com/event-loop-in-javascript-672c07618dc9#:~:text=First%0AThird%20%0ASecond-,We,-invoke%20bar.)
+          ![image29](/images/image29.png)
 
-## Examples
+          :link: [Similar example here](https://towardsdev.com/event-loop-in-javascript-672c07618dc9#:~:text=First%0AThird%20%0ASecond-,We,-invoke%20bar.)
+
+### Examples
 
 - Example 1:
 

@@ -4,7 +4,7 @@
 
 :pushpin: refer to Monster Killer app within the [Control Structures folder](/ControlStructures/monsterKiller/)
 
-## Conditional Statements
+### Conditional Statements
 
 - `if statement` - used to execute code based on a condition
 
@@ -194,7 +194,7 @@
 
         :bulb: great way of returning some value that could be stored in a variable or constant
 
-## Loops
+### Loops
 
 - run the same code multiple times
 

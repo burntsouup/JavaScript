@@ -2,7 +2,7 @@
 
 :pushpin: refer to calculator app within the [Basics folder](/Basics/calculator/)
 
-## Variables & Constants
+### Variables & Constants
 
 - **Variable** - data container/storage where the value can change
 
@@ -22,7 +22,7 @@
 
     :bulb: typically we capitalize global constants
 
-## Operators
+### Operators
 
 - allows us to manipulate values
 
@@ -58,7 +58,7 @@
 
   :link: [Operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence)
 
-## Data Types
+### Data Types
 
 - **Numbers** - *integers* (`1`, `-3`) or *floats* (`7.1`)
 
@@ -100,7 +100,7 @@
   [1, 3, 5]
   ```
 
-  :pushpin: arrays explained in more detail [here](/7%20-%20Arrays.md)
+  :pushpin: arrays explained in more detail [here](/6%20-%20Arrays.md)
 
 - **undefined**, **null**, **NaN**
 
@@ -185,7 +185,7 @@
         3 / "3"  // outputs 1
       ```
 
-## Functions
+### Functions
 
 - code-on-demand; define isolated code that can be executed at a late point in time
 
@@ -227,7 +227,9 @@
 
 - **indirect** function execution
 
-    - we don't want the JS Engine to execute a function right away; *call* the function without any parameters and `()`
+    - we don't want the JS Engine to execute a function, right away, and we don't want it to return a value
+
+    - we can achieve this by *calling* the function without any parameters and `()`
 
     - example - only execute the `add` function when the button is clicked
 
@@ -237,9 +239,9 @@
 
 - there are *built-in* functions that can be called at any time. For example: `addEventListener`, `push`, `alert`, etc.
 
-:pushpin: functions explained in more detail [here](/5%20-%20Functions.md)
+:pushpin: functions explained in more detail [here](<5 - More Functions.md>)
 
-## Additional Considerations
+### Additional Considerations
 
 - **Naming**
 
