@@ -98,13 +98,13 @@
 
         - Syntax 2: `() => expression`
 
-            :bulb: you don't require parameters, but you must include `()`
+            :bulb: if you don't require parameters, you must include `()`
 
         - Syntax 3: `param => expression`
 
              :bulb: If you have only 1 parameter, you can remove the `()`
 
-        :bulb: if we're working with an `expression`, then we remove the `return` keyword and `{}`. However, if we're working with an expression, then we must include `return` and `{}`
+        :bulb: if we're working with an `expression`, then we remove the `return` keyword and `{}`. However, if we're working without an expression (statement), then we must include `return` and `{}`
 
         ```JavaScript
         let add = (a, b) => a + b;  

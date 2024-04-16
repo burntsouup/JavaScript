@@ -4,9 +4,7 @@
 
 - JS is a programming language, mostly used for web development
 
-- it is **dynamic**, **compiled at runtime (JiT)**
-
-  - it was created to **make webpages more dynamic** (e.g. change content on a page inside the browser)
+- it is **compiled at runtime (JiT)** and **dynamic** (e.g. change content on a page inside the browser)
 
   :bulb: **dynamic** - code is compiled (translates from a source language to a target language; from JS to machine code) during the execution of the program, at runtime (when the machine's CPU interprets and acts on the code instructions).  Also called *just-in-time*
 
@@ -18,7 +16,7 @@
 
   - processing one command at a time. For operation 2 to start, operation 1 has to finish
 
-  - a thread has a **call stack** and **memory heap**, which are used for memory management and code execution
+  - a single thread has a **call stack** and **memory heap**, which are used for memory management and code execution
 
 - JS can be executed as part of a web browser or, as of more recently, directly on a server (Node.js)
 
@@ -38,6 +36,8 @@
 
   :bulb: JavaScript is now known as a language that conforms to the ECMAScript standard
 
+  :bulb: new versions of ECMAScript are released every few years, resulting in changes to the JavaScript language
+
 - Microsoft gained a dominant position in the browser market.  By the early 2000s, IE's market share reached ~95%.  Therefore, JScript became the de facto standard for web development
 
 - However, over time, this started to change.  JavaScript soon became the most popular client-side language.  Here are a few examples of why:
@@ -54,25 +54,25 @@
 
 - Many open-source libraries and web frameworks were born, based on JavaScript: React, Angular, jQuery, Vanilla JS, etc.
 
-### How do webpages work?
+### The Mechanics of a Web Browser
 
-- User visits/interacts with a browser through their client/machine
+- a browser is software enabling users to access content on the World Wide Web. The browser is used to locate, request, receive, and display content that a user can easily interact with (images, videos, documents, etc.)
 
-  - Initial visit - request is sent to the server; a computer where the webpage sits (where the HTML file is posted)
-
-  - Server loads webpage (HTML file) and sends it back to your browser (response)
+- for example, a user wants to access a web page. The user interacts with the browser, through their client device, entering the URL address. The browser sends an HTTP request to the server, where the website's files are stored (HTML, CSS, and JS files). The server sends the files back to the client. The browser interprets these files, ultimately rendering a web page. It interprets the HTML structure. applies styling, using CSS, to define the layout and appearance, and executes JS code to add interactivity and dynamic functionality. The user can further interact with the web page, using the browser, which would trigger additional HTTP requests to the server to load new pages or retrieve data
 
   ![image1](/images/image1.png)
 
-- What if the user clicks on a form on that webpage?
+- components of a web browser:
 
-  - Triggers a new request (sent from client to server)
+  - User interface - the visually intuitive space where users can interact with the browser (e.g. tabs, address bar, refresh button, etc.)
 
-  - Server processes request, maybe stores some data in a DB, and then responds back with a new HTML file webpage
+  - Browser engine - coordinates the relationship with the different components of the browser
 
-- JS makes the client/browser experience more "reactive"
+  - Rendering engine - creates the visual content displayed on a web page (e.g. layout, text, images, etc.)
 
-  - E.g. instead of sending a second response, the originally loaded page could, instead, dynamically change to meet the needs of the user
+  - JavaScript engine - interprets and compiles JS code that can be executed by the user's CPU, adding interactivity and dynamic functionality to the web page
+
+  - Networking - handles the network communication (e.g. resolving a URL to an IP address, sending an HTTP request to a server, etc.)
 
   ![image2](/images/image2.png)
 
@@ -246,31 +246,50 @@
 
     - **Memory Leak** - unused objects that still hold a *reference*
 
-- **Web APIs**
+- **Web APIs**, **Event Loop**, and **Task Queue**
 
-  - Webs APIs, included in the browser, can be used with the JS language to add more complex functionality
+  :bulb: these attached components allow JS, a synchronous language, to be asynchronous
+
+  - **Webs APIs** - used with the JS Engine to add more complex functionality
 
     :bulb: these web APIs are created on the global object (`window`), during the Creation Phase of the GEC
 
-  - Example - JS is synchronous but can be asynchronous with the help of web APIs
+    - Examples - manipulating documents (DOM), fetching data from a server (Fetch), drawing graphics (Canvas, WebGL), audio and video (Web Audio API, WebRTC), device (Geolocation), storage (Web Storage), etc.
 
-      1. function `message()` is *called*, calling the `setTimeout()` function. Both are *pushed* to the *stack*
+  - **Task queue** (aka *message queue* or *callback queue*) - stores tasks/messages that are not immediately executed but that need to be
 
-      2. a callback function is passed to `setTimeout()` and is added/registered to the Web API
+    :bulb: follows a **first-in-first-out** approach
 
-      3. `setTimeout()` and then `message()` are *popped* off the *stack*
+  - **Event Loop** - simply takes a task and pushes it to the *stack*, when empty. It runs in iterations (*ticks*). Event Loop won't run until a *tick* has completed
+
+  - Example:
+
+      1. function `message()` is *called*, calling the `setTimeout()` function. `message()`, followed by `setTimeout()`, are *pushed* to the *stack*
+
+      2. a (callback) function is passed to `setTimeout()` and is added/registered to the web API
+
+      3. `setTimeout()`, followed by `message()`, are done executing and are then *popped* off the *stack*
   
-      4. while the `setTimeout()` timer runs, function `boo()` is *called*, *pushed* to the *stack*, and executes, logging `"Boo!"`. `boo()` is then popped off the stack
+      4. while the `setTimeout()` timer runs within the web API, function `boo()` is *called*, *pushed* to the *stack*, and executes, logging `"Boo!"`. `boo()` is then popped off the stack
 
-      5. after the `setTimeout()` timer runs for 2s, the callback gets added to the **task queue** (*callback queue*)
+      5. after the `setTimeout()` timer runs for 2s, the callback gets added to the **task queue**
 
-      6. once the *stack* is empty, the **Event Loop** takes the task, *pushing* it onto the *stack* to be executed. The callback function is then executed, logging `"hello from callback"`
+      6. once the *stack* is empty, the **Event Loop** takes the task (callback function), *pushing* it onto the *stack* to be executed. The callback function is then executed, logging `"hello from callback"`
 
-          :bulb: **task queue** is a data structure that, unlike the Call Stack that follows a LIFO approach, follows a **first-in-first-out** approach
+          ```JavaScript
+            function message () {
+                setTimeout(() => {
+                    console.log("hello from callback!")
+                }, 2000);
+            }
 
-          :bulb: **Event Loop** simply takes a task and pushes it to the *stack*, when empty. It runs in iterations (***ticks***). Event Loop won't run until a *tick* has completed
+            function boo() {
+                console.log("Boo!");
+            }
 
-          ![image28](/images/image28.png)
+            message();
+            boo();
+            ```
 
           ![image29](/images/image29.png)
 

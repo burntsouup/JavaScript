@@ -4,9 +4,9 @@
 
 - VSCode Shortcuts
 
-    - (chrome) Developer tools - `Ctrl+Shift+I`
+    - Developer tools - `Ctrl+Shift+I`
 
-    - Toggle Line comment - `Ctrl+/`
+    - Comment line - `Ctrl+/`
 
     - Search - `Ctrl+F`, `Ctrl+Shift+F`
 
@@ -15,6 +15,8 @@
     - Move Line Up - `Alt+UpArrow`
 
     - Expand Selection - `Shift+Alt+RightArrow`
+
+    - Select block of text - `Ctrl+Shift+arrow`
 
     - Navigate down page - `Ctrl+DownArrow`
 
@@ -40,7 +42,7 @@
 
     - Settings - `Ctrl+,`
 
-    - (VSCode) Suggestions - `Ctrl+Space`, `Ctrl+Shift+Space` (parameters)
+    - Suggestions - `Ctrl+Space`, `Ctrl+Shift+Space` (parameters)
 
 ### Resources
 
@@ -108,11 +110,9 @@
 
     - network errors - offline server
 
-    - etc.
-
 - Solution:
 
-    - `throw` error - outputs a custom error (throws an exception)
+    - `throw` error - outputs a custom error (*throws* an exception)
 
         - the exception can be a string, number, boolean, or an object (most common)
 
