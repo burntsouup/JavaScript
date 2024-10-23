@@ -6,8 +6,6 @@
 
     - Developer tools - `Ctrl+Shift+I`
 
-    - Comment line - `Ctrl+/`
-
     - Search - `Ctrl+F`, `Ctrl+Shift+F`
 
     - Copy Line Up - `Shift+Alt+UpArrow`
@@ -24,17 +22,19 @@
 
     - Toggle sidebar - `Ctrl+B`
 
-    - Select Next Occurrence - `Ctrl+D`
+    - Select next occurrence - `Ctrl+D`
 
     - Preview markdown - `Ctrl+Shift+V`
 
-    - Replace - `Ctrl+H`
-
-    - Multiple cursors - `Ctrl+Alt+UpArrow`
-
     - Toggle Terminal - `Ctrl+backtick`
 
+    - Replace - `Ctrl+H`
+
+    - Comment line - `Ctrl+/`
+
     - New window - `Ctrl+Shift+N`
+
+    - Multiple cursors - `Ctrl+Alt+UpArrow`
 
     - Command palette - `Ctrl+Shift+P`
 

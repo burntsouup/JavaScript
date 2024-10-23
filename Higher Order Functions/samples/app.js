@@ -10,7 +10,6 @@ CALLBACK FUNCTIONS
 // synchronous code
 // const button = document.getElementById('btn');
 // button.addEventListener('click',() => console.log('Clicked!'));
-
 // let result = 0;
 // for (i=0; i < 100000000; i++) {
 //     result += i;
@@ -23,19 +22,16 @@ function message () {
         console.log("hello from callback!")
     }, 2000);
 }
-
 function boo() {
     console.log("Boo!");
 }
-
-//message();
-//boo();
+// message();
+// boo();
 
 // example 2:
 function dog() {
     console.log("bark bark!");
 }
-
 function noise(callback) {
     console.log("la la la!!");
 
@@ -43,7 +39,6 @@ function noise(callback) {
         callback();
     }
 }
-
 //noise();
 //noise(dog);
 //noise(function() {console.log("gah gah gah");})
@@ -55,15 +50,13 @@ const posts = [
     { title: "Post one", body: "Post one body" },
     { title: "Post two", body: "Post two body" }
 ]
-
 function getPost() {
     setTimeout(() => {
-        posts.forEach((x) => {
-            console.log(x.title);
+        posts.forEach(post => {
+            console.log(post.title);
         });
-    }, 1000)
+    }, 1000);
 }
-
 //getPost();
 
 // Returning a function
@@ -86,9 +79,9 @@ function multiplier(factor) {
 // }
 
 //let doubler = multiplier(2);
-//doubler(3) //returns 6
+//console.log(doubler(3)) //returns 6
 //let tripler = multiplier(3);
-//tripler(5) //return 15
+//console.log(tripler(5)) //return 15
 
 
 /*
@@ -98,7 +91,7 @@ PROMISE FUNCTIONS
 */
 
 // example 1:
-// const promise = new Promise((resolve, reject) => {
+// let p = new Promise((resolve, reject) => {
 //     const num = Math.random();
 //     if (num >= 0.5) {
 //         resolve("Promise is fulfilled!");
@@ -106,21 +99,22 @@ PROMISE FUNCTIONS
 //         reject("Promise failed!");
 //     }
 // });
+// p.then(value => console.log(value + " Yay!"));
+// p.catch(err => console.log(err));
 
 // example 2:
-const delay = function(time) {
-    return new Promise((resolve, reject) => {
-        if(isNaN(time)){
-            reject(new Error("delay requires a number!!"));
-        } else {
-            setTimeout(() => resolve, time);
-        }
-    })
-};
-
+// const delay = function(time) {
+//     return new Promise((resolve, reject) => {
+//         if(isNaN(time)){
+//             reject(new Error("delay requires a number!!"));
+//         } else {
+//             setTimeout(resolve, time);
+//         }
+//     })
+// };
 // let time = prompt("Enter a number less than 10:",)*1000;
 // delay(time)
-//     .then(()=> console.log("Wahoo!"))
+//     .then(() => console.log("Wahoo!"))
 //     .catch(err => console.log(err));
 
 
@@ -131,7 +125,6 @@ const delay = function(time) {
 //     color: 'green',
 //     version: '7'
 // };
-
 // const willIGetNewPhone = new Promise((resolve, reject) => {
 //         if (isMomHappy) {
 //             resolve(phone);
@@ -141,7 +134,6 @@ const delay = function(time) {
 
 //     }
 // );
-
 // willIGetNewPhone
 //     .then(value => console.log("I got a new phone!: " + value.brand))
 //     .catch(() => console.log(new Error('mom is unhappy')));
@@ -150,7 +142,6 @@ const delay = function(time) {
 // const img = document.querySelector('img');
 // const button = document.getElementById('btn');
 // let searchValue = prompt("Enter a value:",);
-
 // const giphyAPI = `https://api.giphy.com/v1/gifs/search?api_key=AMqOV3iIhSOAfJ2fz8scG8HEsl0SXSJ7&q=${searchValue}&limit=25&offset=0&rating=g&lang=en&bundle=messaging_non_clips`;
 
 // let setup = function() {
@@ -168,34 +159,32 @@ const delay = function(time) {
 // button.addEventListener('click', setup);
 
 // example 5:
+// let searchValue = prompt("Enter a value:",);
+// const giphyAPI = `https://api.giphy.com/v1/gifs/search?api_key=AMqOV3iIhSOAfJ2fz8scG8HEsl0SXSJ7&q=${searchValue}&limit=25&offset=0&rating=g&lang=en&bundle=messaging_non_clips`;
+// const resultsEl = document.getElementById('results')
+// let resultsHTML = '';
 
-let searchValue = prompt("Enter a value:",);
+// let getRequest = fetch(giphyAPI);
+// // console.log(getRequest);
 
-const giphyAPI = `https://api.giphy.com/v1/gifs/search?api_key=AMqOV3iIhSOAfJ2fz8scG8HEsl0SXSJ7&q=${searchValue}&limit=25&offset=0&rating=g&lang=en&bundle=messaging_non_clips`;
-const resultsEl = document.getElementById('results')
-let resultsHTML = '';
+// let getGif = function(num) {
+//     return getRequest
+//         .then(response => {
+//             return response.json();
+//         })
+//         .then(json => {
+//             // console.log(json)
+//             return resultsHTML = `<img src="${json.data[num].images['fixed_height'].url}">`
+//         });
+// }
 
-let getGif = function(num) {
-    return fetch(giphyAPI)
-        .then(response => {
-            return response.json();
-        })
-        .then(json => {
-            console.log(json)
-            return resultsHTML = `<img src="${json.data[num].images['fixed_height'].url}">`
-        });
-}
 
 // chained:
 // getGif(0)
-//     .then(value => {resultsEl.innerHTML += value; return getGif(1)})
-//     .then(value => {resultsEl.innerHTML += value; return getGif(2)})
-//     .then(value => resultsEl.innerHTML += value)
-
-// not chained:
-// getGif(0).then(value => resultsEl.innerHTML += value)
-// getGif(1).then(value => resultsEl.innerHTML += value)
-// getGif(2).then(value => resultsEl.innerHTML += value)
+//    .then(value => {resultsEl.innerHTML += value; return getGif(1)})
+//    .then(value => {resultsEl.innerHTML += value; return getGif(2)})
+//    .then(value => resultsEl.innerHTML += value)
+//    .catch(err => console.log("oops .. something went wrong :(" + err))
 
 // Promise.all()
 // let promises = [getGif(0), getGif(1), getGif(2)];
@@ -215,7 +204,7 @@ ASYNC & AWAIT
 //         if(isNaN(time2)){
 //             reject(new Error("delay requires a number!!"));
 //         } else {
-//             setTimeout(() => resolve("resolved!"), time2);
+//             setTimeout(resolve("resolved!"), time2);
 //         }
 //     })
 // };

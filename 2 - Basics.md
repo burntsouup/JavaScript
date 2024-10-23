@@ -28,7 +28,7 @@
 
 - Types:
 
-  - **Arithmetic**: `+ - * / ** %`
+  - **Arithmetic**: `+` `-` `*` `/` `**` `%`
 
     - **Increment/Decrement** operators
 
@@ -50,11 +50,11 @@
         currentResult += enteredNumber;
       ```
 
-      :bulb: also applies to: `-= *= /= %= **=`
+      :bulb: also applies to: `-=` `*=` `/=` `%=` `**=`
 
-  - [Comparison](/Control%20Structures.md): `== === != !== > < >= <= ?`
+  - [Comparison](/Control%20Structures.md): `==` `===` `!=` `!==` `>` `<` `>=` `<=` `?`
 
-  - [Logical](/Control%20Structures.md): `&& || !`
+  - [Logical](/Control%20Structures.md): `&&` `||` `!`
 
   :link: [Operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence)
 
@@ -223,7 +223,7 @@
 
     - variables defined within the function body (*local* scope) are ONLY available within the function itself
 
-    - **shadow variables** - can we define the SAME named variable globally and then locally
+    - **shadow variables** - we can define the SAME named variable globally and then locally
 
 - **indirect** function execution
 
@@ -325,7 +325,7 @@
 
   a. Normal execution:
 
-    - JS engine receives the data, loads it, starts parsing, pauses parsing to fetch, download, and execute script, then continues parsing ...
+    - JS engine receives the data, loads it, starts parsing, pauses parsing to fetch, download, and execute a script, before continue parsing ...
 
       :bulb: this extends the time it takes for content to load
 
@@ -333,7 +333,7 @@
 
       ![image14](/images/image14.png)
 
-      ![image13](/images/image13.png)
+      ![image18](/images/image18.png)
   
   b. `Defer` attribute
 
@@ -343,7 +343,7 @@
 
       ![image15](/images/image15.png)
 
-      ![image17](/images/image17.png)
+      ![image13](/images/image13.png)
   
   c. `Async` attribute
 
@@ -352,8 +352,6 @@
       :bulb: this make sense if your script file doesn't reply on the HTML code (e.g. DOM interactions)
 
       ![image16](/images/image16.png)
-
-      ![image18](/images/image18.png)
 
 - **Strict mode** - enables a restricted variant of JS (disabling *sloppy mode*)
 

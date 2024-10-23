@@ -1,7 +1,7 @@
 //0
 const ATTACK_VALUE = 10; //3
-const MONSTER_ATTACK_VALUE = 14; //4
 const STRONG_ATTACK_VALUE = 17; //3
+const MONSTER_ATTACK_VALUE = 14; //4
 const HEAL_VALUE = 20; //2
 
 let chosenMaxLife;
@@ -70,7 +70,6 @@ function writeToLog(event, value, monsterHealth, playerHealth) {
             finalMonsterHealth: monsterHealth,
             finalPlayerHealth: playerHealth
         };
-        battleLog.push(logEntry);
     } else if (event === "GAME_OVER") {
         logEntry = {
             event: event,
@@ -145,7 +144,7 @@ function logHandler() {
             console.log(`${key} >>> ${el[key]}`);
         }
         i++;
-        break;
+        //break;
     }
 }
 
@@ -245,4 +244,4 @@ function healPlayerHandler() {
 attackBtn.addEventListener('click', attackHandler);  // on every 'ATTACK' button click, run attackHandler 
 strongAttackBtn.addEventListener('click', attackHandler);
 healBtn.addEventListener('click', healPlayerHandler);
-logBtn.addEventListener('click', logHandler);
+logBtn.addEventListener('click', logHandler); 

@@ -15,7 +15,7 @@ let gameIsRunning = false;
 //1
 const getPlayerChoice = function() {
     const selection = prompt(`${ROCK}, ${PAPER}, or ${SCISSORS}`, "").toUpperCase();
-    if (selection !== ROCK && selection !== PAPER && selection && SCISSORS) {
+    if (selection !== ROCK && selection !== PAPER && selection !== SCISSORS) {
         alert(`Invalid choice .. we chose ${DEFAULT_USER_CHOICE} for you`);
         return;
     }

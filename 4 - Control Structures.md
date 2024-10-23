@@ -89,7 +89,7 @@
 
             - Scenario 1 - comparing 2 objects/arrays that have the same values, using the `===/==` operator, would return a `false`
 
-                :bulb: both objects/arrays have different memory (heap) allocations
+                :bulb: recall, both objects/arrays have different memory (heap) allocations
 
                 ```JavaScript
                 person1 = {name: "John"}
@@ -108,7 +108,7 @@
         - `>=`, `<=` greater than and equal, smaller than and equal
 
     - **Logical operators**:
-    
+
         - **AND** (`&&`) and **OR** (`||`) - combines conditions
 
             - AND example - `expr1 && expr2` returns `true` if both operands are true

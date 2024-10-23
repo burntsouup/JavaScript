@@ -4,11 +4,11 @@
 
 - JS is a programming language, mostly used for web development
 
-- it is **compiled at runtime (JiT)** and **dynamic** (e.g. change content on a page inside the browser)
+- **compiled at runtime (JiT)** and **dynamic**
 
-  :bulb: **dynamic** - code is compiled (translates from a source language to a target language; from JS to machine code) during the execution of the program, at runtime (when the machine's CPU interprets and acts on the code instructions).  Also called *just-in-time*
+  :bulb: code is compiled (translates from a source language to a target language; from JS to machine code) during the execution of the program, at runtime (when the machine's CPU interprets and acts on the code instructions)
 
-- it is **weakly typed** and multi-paradigm, supporting **event-driven**, **functional**, **imperative**, and **object-oriented** styles
+- **weakly typed** and multi-paradigm, supporting **event-driven**, **functional**, **imperative**, and **object-oriented** styles
 
   :bulb: **weakly-typed** - data types are assumed automatically. This results in fewer errors, allowing your code to run as expected
 
@@ -56,69 +56,105 @@
 
 ### The Mechanics of a Web Browser
 
-- a browser is software enabling users to access content on the World Wide Web. The browser is used to locate, request, receive, and display content that a user can easily interact with (images, videos, documents, etc.)
+- a browser is software enabling users to access content on the World Wide Web. The browser is used to display content that a user can easily interact with (images, videos, documents, etc.)
 
-- for example, a user wants to access a web page. The user interacts with the browser, through their client device, entering the URL address. The browser sends an HTTP request to the server, where the website's files are stored (HTML, CSS, and JS files). The server sends the files back to the client. The browser interprets these files, ultimately rendering a web page. It interprets the HTML structure. applies styling, using CSS, to define the layout and appearance, and executes JS code to add interactivity and dynamic functionality. The user can further interact with the web page, using the browser, which would trigger additional HTTP requests to the server to load new pages or retrieve data
+- example of a user attempting to access content on a web page:
 
-  ![image1](/images/image1.png)
+  1. the user interacts with the browser, through their client device, navigating to a `URL address`
+  
+  2. the browser identifies the server, where the website's contents are stored, using `DNS`
+  
+  3. the browser establishes a secured connection with the server using `TCP/IP` and `TLS`
+  
+  4. the browser sends an `HTTP` (`GET`) request to the server, asking for an `HTML` file. The server responds by sending the `HTML` file back to the client
+  
+  5. the browser **parses** the `HTML` file, building the **DOM** node tree; a hierarchical representation of objects that comprise of the relationships and contents defining a website, that can be accessed and manipulated using the JS language. The browser will initiate requests every time the parser finds links to external resources, such as stylesheets (`CSS` files), scripts (JS files), or embedded image references
+  
+      :bulb: some requests are **blocking** (e.g. `script` files), meaning that parsing of the remaining `HTML` file is stopped until the received asset is handled
+
+      :pushpin: DOM explained in more detail [here](<9 - DOM.md>)
+
+  6. once the parser is complete, and the **DOM** tree is built, the browser constructs the CSS object model (`CSSOM`), that defines how to **style** certain nodes of the **DOM**
+
+  7. as the `CSSOM` is being created, JS `script` files are downloaded, parsed, interpreted, compiled, and executed, adding interactivity and dynamic functionality
+
+      :bulb: these steps are performed by the **JS engine**
+  
+  8. once the **DOM** and `CSSOM` trees are built, the `Render tree` is created, used to capture visible nodes from the **DOM** tree and any associated styles
+
+      ![image39](/images/image39.png)
+
+  9. after the render tree is created, the `layout` is determined, defining size and position of each object on the page
+  
+      :bulb: subsequent recalculations are called **reflows**, sparking a **repaint**
+
+  10. after layout, pixels are `painted` onto the screen, displaying visual content for the user to see
+
+      :bulb: steps 5 - 10 define the **Critical Rendering Path**; how the browser converts HTML, CSS, and JS into pixels on the screen. These steps are performed by the **Rendering engine**
+
+      ![image34](/images/image34.png)
+
+      ![image1](/images/image1.png)
+
+      ![image13](/images/image13.png)
+
+      :link: [Explained in greater detail here](https://developer.mozilla.org/en-US/docs/Web/Performance/How_browsers_work#javascript_compilation)
 
 - components of a web browser:
 
-  - User interface - the visually intuitive space where users can interact with the browser (e.g. tabs, address bar, refresh button, etc.)
+  - **User interface** - the visually intuitive space where users can interact with the browser (e.g. tabs, address bar, refresh button, etc.)
 
-  - Browser engine - coordinates the relationship with the different components of the browser
+  - **Browser engine** - coordinates the relationship with the different components of the browser
 
-  - Rendering engine - creates the visual content displayed on a web page (e.g. layout, text, images, etc.)
+  - **Rendering engine** - creates the visual content displayed on a web page (e.g. layout, text, font, images, etc.) (e.g. Blink - Google Chrome, Gecko - Firefox, WebKit - Safari)
 
-  - JavaScript engine - interprets and compiles JS code that can be executed by the user's CPU, adding interactivity and dynamic functionality to the web page
+  - **JavaScript engine** - interprets and compiles JS code that can be executed by the user's CPU, adding interactivity and dynamic functionality to the web page
 
-  - Networking - handles the network communication (e.g. resolving a URL to an IP address, sending an HTTP request to a server, etc.)
+  - **Networking** - handles the network communication (e.g. DNS resolution, sending an HTTP request to a server using TCP/IP, etc.)
+
+  - **Storage** - e.g. local, session, cookies, etc.
 
   ![image2](/images/image2.png)
 
-### How is JS code executed?
+### How does the JS Engine work (high-level)
 
-- **JS Engine** - a program that receives source code, loads it, parses it, compiles it to binary instructions (machine code) that the CPU understands, and then executes it
+- **JS Engine** - a program that receives source code (from a `script` file), loads it, parses it, compiles it to binary instructions (machine code) that the CPU understands, and then executes it
 
   ![image3](/images/image3.png)
 
-- Browsers have built-in JS engines:
-  
-  - SpiderMonkey in Firefox
-
-  - V8 in Chrome
+- browsers have built-in JS engines (e.g. V8 - Chrome, SpiderMonkey - Firefox, Chakra - Microsoft Edge)
 
 - Compiled vs Interpreted language
 
-  - Compiled - code is translated directly to machine code, all at once (e.g. C, C++)
+  - **Compiled** - code is translated directly to machine code, all at once (e.g. C, C++)
 
-  - Interpreted - interpreter reads and compiles the code, line-by-line (e.g. JS)
+  - **Interpreted** - interpreter reads and compiles the code, line-by-line (e.g. JS)
 
   :bulb: compiled languages have a slow write-time and a fast run-time while interpreted languages have the opposite
 
-- JS engine is defined by an **Interpreter** and a **Compiler**
+- JS engine steps (high-level):
 
-  - **Interpreter** - loads source code, parses, and translates it to bytecode (machine code; x86, ARM, etc.), starting the execution
+  1. **Interpreter** - loads source code, parses, and translates it to bytecode (machine code; x86, ARM, etc.), starting the execution
 
-  - **Compiler** - Interpreter hands the machine code to the Compiler that then executes the code whilst the code is being received, at runtime (called **just-in-time**)
+  2. **Compiler** - the *interpreter* hands the machine code to the *compiler* that then executes the code whilst the code is being received, at runtime (called **just-in-time compilation**)
 
-  - Compiled machine code is handed off to your computer (CPU) to execute the code
+  3. Compiled machine code is handed off to your computer's CPU to execute the code
 
-    ![image23](/images/image23.png)
+      ![image23](/images/image23.png)
 
-- Steps:
+- JS engine steps (detailed):
 
-  1. Source code passed to the parser that reviews the code, lin-by-line, to check if the syntax is correct
+  1. source code, from a `script` file, is passed to a parser that reviews the code, line-by-line, to check if the syntax is correct
 
-  2. If the code is correct, then an Abstract Syntax Tree is created. The AST represents the code as a tree of nodes where each node is a set of data
+  2. if the code is correct, then an **Abstract Syntax Tree** (AST) is created. The AST represents the code as a tree of nodes where each node is a set of data
 
-       :link: [AST Explorer](https://astexplorer.net/)
+      :link: [AST Explorer](https://astexplorer.net/)
   
-  3. Interpreter takes AST and translates it to Bytecode. Bytecode is an Intermediate Representation; an abstraction of machine code
+  3. **Interpreter** takes AST and translates it to bytecode. Bytecode is an *Intermediate Representation*; an abstraction of machine code
 
       :bulb: Interpreter doesn't translate code directly to machine code because machine code is unique to the architecture of the machine (e.g. ARM vs Intel processors). Bytecode is universal and it can be optimized
 
-  4. Compiler will translate Bytecode "on the fly" (JiT), at runtime
+  4. **Compiler** will translate bytecode just-in-time, at runtime
 
       :bulb: Compiled languages will compile all of the code before execution; called Ahead-of-Time (AoT)
   
@@ -126,17 +162,13 @@
 
     ![image27](/images/image27.png)
 
-- JS engine receives the data, loads it, parses it, evaluates script, compiles script, and then compiles the code
-
-  ![image13](/images/image13.png)
-
-### How the JS Engine works
+### How the JS Engine works (detailed)
 
 - **Execution Context** (EC) - environment where code is executed
 
   - Types of EC:
 
-    1. **Global Execution Context** (GEC) - when the engine receives a script file, by default, it creates a single EC, called the GEC. This is where all code (variables and functions) that are not inside a function are stored and executed
+    1. **Global Execution Context** (GEC) - when the engine receives a `script` file, by default, it creates a single EC, called the GEC. This is where all code (variables and functions) that are not inside a function are stored and executed
 
         :bulb: a global object is created that represents the GEC. The `window` object is created for a browser and the `global` object is created for a server
 
@@ -184,7 +216,7 @@
 
 - **Call Stack** (EC Stack) - how code is executed during the Execution phase
 
-  - a data structure of a collection of ECs to be executed
+  - a collection of ECs to be executed
 
   - follows a **last-in-first-out** principle
 
@@ -194,25 +226,27 @@
 
   - The JS Engine requires a place to store and read/write information and a place to keep track of what's happening. Introducing the **stack** and **heap**:
 
-    - **Stack** - (*in addition to what was described above*) used to store **static** data (**Primitives** and **references** to objects and functions)
+    1. **Stack** - (*in addition to what was described above*) used to store **static** data
 
-      :bulb: *static* - a fixed size known to the engine before compilation
+        :bulb: **static** data - a fixed size known to the engine before compilation. This includes **Primitives** and **references** that point to objects and functions
 
-      :bulb: a fixed amount of memory is allocated for static data
+        :bulb: a fixed amount of memory is allocated for static data
 
-      :bulb: **stack overflow** - number of function calls (FECs) exceeds the *stack's* maximum storage limit
+        :bulb: **stack overflow** - number of function calls (FECs) exceeds the stack's maximum storage limit
 
-    - **Heap** - used to store objects and functions
+    2. **Heap** - used to store objects and functions
 
-      :bulb: more memory, as required, is allocated for this data since they don't have a known fixed size at compilation
+        :bulb: more memory, as required, is allocated for this data since they don't have a known fixed size at compilation
 
   - The **memory lifecycle** follows these steps:
 
-    1. allocation of memory required
+    1. **Allocation** - dedicated memory required
 
-    2. uses the allocated memory
+    2. **Use** - of allocated memory
 
-    3. releases the memory when not in use (called *Garbage Collection*)
+    3. **Release** (**Garbage Collection**) - removing memory when not in use
+
+        :bulb: a **memory leak** occurs when the program continues to allocate unused memory, without releasing it
 
   - Data Types:
 
@@ -254,9 +288,9 @@
 
     :bulb: these web APIs are created on the global object (`window`), during the Creation Phase of the GEC
 
-    - Examples - manipulating documents (DOM), fetching data from a server (Fetch), drawing graphics (Canvas, WebGL), audio and video (Web Audio API, WebRTC), device (Geolocation), storage (Web Storage), etc.
+    - Examples - manipulating documents (DOM), fetching data from a server or database (Fetch), drawing graphics (Canvas, WebGL), audio and video (Web Audio API, WebRTC), device (Geolocation), storage (Web Storage), etc.
 
-  - **Task queue** (aka *message queue* or *callback queue*) - stores tasks/messages that are not immediately executed but that need to be
+  - **Task queue** (also called **message queue** or **callback queue**) - stores tasks/messages that are not immediately executed but that need to be
 
     :bulb: follows a **first-in-first-out** approach
 
