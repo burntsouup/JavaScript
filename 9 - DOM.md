@@ -155,9 +155,11 @@
 
             - **Element** nodes - a type of node in the DOM. Elements are built with `HTML` tags (e.g. `<div>`, `<p>`, `<a>`, etc.)
 
-                :bulb: the browser's developer tools includes the **Elements** tab, displaying all Element nodes but in a human-readable fashion
+                :bulb: the browser's developer tools includes the *Elements* tab, displaying all Element nodes but in a human-readable fashion
 
                 :bulb: we typically manipulate Element nodes
+
+            :bulb: any whitespace within our `HTML` file are **Text** nodes. **Text** nodes are excluded from the browser's *Elements* tab
 
             ![image37](/images/image37.png)
 
@@ -253,7 +255,7 @@
                 h1.parentNode.parentNode; //returns the grandparent node in the DOM tree
                 ```
 
-                :bulb: the parent of almost any node is an Element node since Text and Comment nodes cannot be parent nodes. The only exception is that since the parent of the `html` node is the `document` node, `parentElement` returns `null` while `parentNode` returns the `document` node. Therefore `parentNode` is more commonly used
+                :bulb: the parent of any node is an Element node since Text and Comment nodes cannot be parent nodes. The only exception is that since the parent of the `html` node is the `document` node, `parentElement` returns `null` while `parentNode` returns the `document` node. Therefore `parentNode` is more commonly used
 
             - **children** node properties:
 
@@ -277,7 +279,11 @@
 
                 :bulb: `childNodes` property can return Element, Text, and Comment nodes
 
-                :bulb: `ul.childNodes` returns 4 Text nodes which represents the indentation (whitespace) between Elements within our `html` file: [text, li, text, li.list-item, text, li.list-item, text]. Therefore, if we try to change the background color of the first child node (`ul.firstChild.style.background = 'yellow';`), it won't work because the first child is a Text node. The `children`, `firstElementChild`, and `lastElementChild` properties were created to only return child Element nodes
+                :bulb: `ul.childNodes` returns 4 Text nodes which represents the whitespace between Elements within our `HTML` file. Therefore, if we try to change the background color of the first child node (`ul.firstChild.style.background = 'yellow';`), it won't work because the first child is a Text node. The `children`, `firstElementChild`, and `lastElementChild` properties were created to only return child Element nodes
+
+                ![image47](/images/image47.png)
+
+                ![image46](/images/image46.png)
 
                 :bulb: `NodeList` objects are collections of nodes. They are NOT JS arrays, however, we can use some methods (e.g. `forEach()`) and loops (e.g. *for-of* loop) to work with these objects
 
@@ -292,17 +298,110 @@
                 item1.nextElementSibling.nextElementSibling.style.background = 'aquamarine'; //changes the background of the next sibling Element node in the NodeList to aquamarine
                 ```
 
-
-
-
-
-
     - Styling the **DOM**
 
-        - recall, once the **DOM** tree is built, the browser constructs the CSS object model (`CSSOM`), that defines how to *style* certain nodes of the **DOM**
+        - **CSS** (Cascading Style Sheets) is used to style and define the layout of web pages. For example, defining the font, size, color, and spacing of content
 
-            ![image38](/images/image38.png)
+        - styles can also be applied inline using the `style` property (e.g. review previous examples on DOM manipulation)
 
-        - once the **DOM** and `CSSOM` trees are built, the `Render tree` is created, used to capture visible nodes from the **DOM** tree and any associated styles
+            :bulb: inline styles take priority over **CSS**
 
-            ![image39](/images/image39.png)
+        - recall the steps taken to *style* the DOM:
+
+            1. the browser **parses** the `HTML` file, building the **DOM** node tree. The browser will initiate requests every time the parser finds links to external resources, such as stylesheets (`CSS` files), scripts (JS files), or embedded references
+
+            2. once the **DOM** tree is built, the browser constructs the CSS object model (`CSSOM`), that defines how to style certain nodes of the **DOM**
+
+                ![image38](/images/image38.png)
+
+            3. once the **DOM** and `CSSOM` trees are built, the `Render tree` is created, used to capture visible nodes from the **DOM** tree and any associated styles
+
+                ![image39](/images/image39.png)
+
+            4. after the Render tree is created, the `layout` is determined, defining size and position of each object on the page
+
+                :bulb: subsequent recalculations are called **reflows**, sparking a **repaint**
+
+            5. after layout, pixels are `painted` onto the screen, displaying visual content for the user to see
+
+                :bulb: these steps define the **Critical Rendering Path**; how the browser converts HTML, CSS, and JS into pixels on the screen. These steps are performed by the **Rendering engine**
+
+                ![image34](/images/image34.png)
+
+        - **CSS** is a rule-based language that are defined by *styles* applied to Elements
+
+        - **CSS** syntax:
+
+            - **selector** - selects the Element we are going to style
+
+            - **declarations** - property:value pairs wrapped in {}
+
+        - **Selectors**:
+
+            - **type** - selects all Elements of a given type
+
+                ```CSS
+                /* apply styles to all <h2> Elements */
+                h2 {
+                    font-size: 1.5em;
+                    margin: 1rem 0.5rem;
+                    color: orange;
+                }
+                ```
+
+            - **class** - matches Elements based on their class attribute
+
+                ```CSS
+                /* apply styles to Elements that have a class attribute called firstParagraph */
+                .firstParagraph {
+                    font-weight: bold;
+                    color: #ff02fb;
+                }
+                ```
+
+                :bulb: p.firstParagraph applies styles to any <p> Elements that have a class of `firstParagraph`
+
+            - **id** - matches Elements based on their id attribute
+
+                ```CSS
+                /* apply styles to Elements that have an id attribute called thirdHeader */
+                #thirdHeader {
+                    color: #00ff3c;
+                    border: red 1px solid;
+                }
+                ```
+
+            - **attribute** - matches Elements based on a given attribute
+
+                ```CSS
+                /* apply styles to <a> elements with an href matching "https://example.org" */
+                a[href="https://example.com"] {
+                    font-size: 2em;
+                }
+                ```
+
+            - **state** - a keyword added to a selector that specifies a special state of the selected Elements
+
+                ```CSS
+                /* apply styles to a <button> element when hovering over */
+                .joinBtn:hover {
+                    background-color: rgb(228, 33, 33);
+                }
+                ```
+
+            - **descendant** - combines two selectors such that Elements matched by the second selector are selected if they have an ancestor Element matching the first selector. Represented by a *space*
+
+                ```CSS
+                /* apply styles to an <em> Element that directly follows a <p> Element */
+                p em {
+                    color: rebeccapurple;
+                    font-size: 1.5em;
+                }
+                ```
+
+                ```CSS
+                /* apply styles to a <span> Elements that directly follow a <p> Element */
+                p span {
+                    color: red;
+                }
+                ```

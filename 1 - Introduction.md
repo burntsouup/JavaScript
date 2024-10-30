@@ -68,7 +68,7 @@
   
   4. the browser sends an `HTTP` (`GET`) request to the server, asking for an `HTML` file. The server responds by sending the `HTML` file back to the client
   
-  5. the browser **parses** the `HTML` file, building the **DOM** node tree; a hierarchical representation of objects that comprise of the relationships and contents defining a website, that can be accessed and manipulated using the JS language. The browser will initiate requests every time the parser finds links to external resources, such as stylesheets (`CSS` files), scripts (JS files), or embedded image references
+  5. the browser **parses** the `HTML` file, building the **DOM** node tree; a hierarchical representation of objects that comprise of the relationships and contents defining a website, that can be accessed and manipulated using the JS language. The browser will initiate requests every time the parser finds links to external resources, such as stylesheets (`CSS` files), scripts (JS files), or embedded references
   
       :bulb: some requests are **blocking** (e.g. `script` files), meaning that parsing of the remaining `HTML` file is stopped until the received asset is handled
 
@@ -84,7 +84,7 @@
 
       ![image39](/images/image39.png)
 
-  9. after the render tree is created, the `layout` is determined, defining size and position of each object on the page
+  9. after the Render tree is created, the `layout` is determined, defining size and position of each object on the page
   
       :bulb: subsequent recalculations are called **reflows**, sparking a **repaint**
 

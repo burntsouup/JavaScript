@@ -1,0 +1,74 @@
+/* ---- type selectors ---- */
+
+html {
+    font-family: 'Segoe UI';
+}
+
+h2 {
+  font-size: 1.5em;
+  margin: 1rem 0.5rem;
+  color: orange;
+}
+
+li {
+  list-style-type:circle;
+}
+
+/* ---- class selectors ---- */
+
+.firstParagraph {
+  font-weight: bold;
+  color: #ff02fb;
+}
+
+/*
+p.firstParagraph {
+  font-weight: bold;
+  color: #ff02fb;
+}
+*/
+
+/* ---- ID selectors ---- */
+
+#thirdHeader {
+  color: #00ff3c;
+  border: red 1px solid;
+}
+
+/* ---- Attribute selectors ---- */
+a[href="https://example.com"] {
+  font-size: 2em;
+}
+
+/* ---- State selectors ---- */
+.joinBtn {
+  width: 10em;
+  height: 5ex;
+  background-color: gold;
+  border: 2px solid firebrick;
+  border-radius: 10px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+}
+
+.joinBtn:hover {
+  background-color: rgb(228, 33, 33);
+}
+
+/* ---- Descendant selectors ---- */
+
+p em {
+  color: rebeccapurple;
+  font-size: 1.5em;
+}
+
+p span {
+  color: red;
+}
+
+
+
+
+
+

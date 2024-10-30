@@ -43,7 +43,7 @@ const h1 = document.querySelector('h1');
 
 // console.log(h1.textContent);
 
-h1.textContent = "I'm changing the Text node!";
+h1.textContent = "I'm changing the Text node using JS!";
 
 // console.log(h1.id);
 
@@ -56,9 +56,6 @@ h1.style.backgroundColor = 'red';
 
 // console.log(h1.getAttribute("id"));
 h1.setAttribute("title", "setting an attribute!");
-
-const li = document.querySelector('li:last-of-type');
-li.textContent = li.textContent + ' + change!'
 
 
 // DOM TRAVERSAL
@@ -104,25 +101,11 @@ item1.nextElementSibling.nextElementSibling.style.background = 'aquamarine';
 
 
 
-
-
-
-
-
-
-
-
-
 //Event listeners:
 
 //Data attributes:
 
 
-function changeTitle() {
-    document.getElementById("main-title").innerHTML = "Hello world!";
-    // document.querySelector("#main-title").innerHTML = "Hello world!";
-} 
-// changeTitle();
 
 
 
