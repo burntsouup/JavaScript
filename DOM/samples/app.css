@@ -1,4 +1,4 @@
-/* ---- type selectors ---- */
+/* ---- Type selectors ---- */
 
 html {
     font-family: 'Segoe UI';
@@ -14,11 +14,14 @@ li {
   list-style-type:circle;
 }
 
-/* ---- class selectors ---- */
+/* ---- Class selectors ---- */
 
 .firstParagraph {
   font-weight: bold;
   color: #ff02fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*
@@ -32,12 +35,17 @@ p.firstParagraph {
 
 #thirdHeader {
   color: #00ff3c;
-  border: red 1px solid;
+  width: 200px;
+  height: 50px;
+  padding: 10px;
+  border: 2px solid black;
+  margin: 20px;
 }
 
 /* ---- Attribute selectors ---- */
 a[href="https://example.com"] {
   font-size: 2em;
+  padding: 10px;
 }
 
 /* ---- State selectors ---- */

@@ -1,6 +1,6 @@
 # DOM
 
-:pushpin: refer to the HTML file within the [DOM folder](DOM)
+:pushpin: refer to the samples folder and movies app within the [DOM folder](DOM)
 
 - **HyperText Markup Language (`HTML`)**
 
@@ -90,10 +90,10 @@
 
             ```HTML
             <html lang="en">
-            <p title="here's a tooltip!">This is the first paragraph!</p>
-            <p style="color:blueviolet">This is a purple paragraph!</p>
-            <a href="https://youtube.com/">this is a link to YouTube!</a>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/DOM-model.svg" width="300" height="300" alt="DOM tree"/>
+            <p title="here's a tooltip!">This paragraph has a tooltip based on the title attribute!</p>
+            <p style="color:blueviolet">This is a purple paragraph based on the style attribute!</p>
+            <a href="https://youtube.com/">this is a link to YouTube based on the href attribute!</a>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/DOM-model.svg" width="100" height="100" alt="DOM tree"/>
             ```
 
         - **content**
@@ -143,7 +143,7 @@
 
     - this process starts when the server responds to a client's request by sending an `HTML` file. The client's browser parses the `HTML` file, starting the incremental construction of the **DOM**. The browser will initiate requests every time it finds links to external resources (e.g. stylesheets, scripts, images, etc.), which continues to build out the **DOM**
 
-    - as the browser parses the `HTML` file, it turns the bytes of data to *characters*, then to *tokens*, that turn into **nodes**, and that are structured, forming the **DOM tree**
+    - as the browser parses the `HTML` file, it turns the bytes of data to *characters*, then to *tokens*, that turn into **nodes**, and that are structured to form the **DOM tree**
 
         - **nodes** - *objects* that represent the `HTML` document. Each node can have a parent and/or child, creating a hierarchy, that forms the **DOM tree**. There are many types of nodes, the most common being **Element**, **Text**, and **Comment** nodes
 
@@ -167,7 +167,7 @@
 
     - manipulating the DOM using a **DOM interface**
 
-        - **DOM interface** - a set of **methods**, **properties**, and **events** for interacting with particular DOM objects. These interfaces allow languages, like JS, to manipulate elements or components on a web page
+        - **DOM interface** - a set of **methods**, **properties**, and **events** for interacting with particular DOM objects. These interfaces allow languages, like JS, to manipulate Elements or components on a web page
 
             - **properties** - a value associated with a DOM object (e.g. `innerHTML`, `id`, `textContent`, `style`, etc.)
 
@@ -179,7 +179,7 @@
 
                 ![image45](/images/image45.png)
 
-            - **methods** - an action you can take on a DOM object. Methods allow you to perform operations on elements (e.g. `getElementById()`, `querySelector()`, etc.)
+            - **methods** - an action you can take on a DOM object. Methods allow you to perform operations on Elements (e.g. `getElementById()`, `querySelector()`, etc.)
 
                 :bulb: think of *properties* as **nouns** (the state of an object) and *methods* as **verbs** (an action you take take on an object)
 
@@ -192,32 +192,33 @@
             ```JavaScript
             document.getElementById("main-title").innerHTML = "Hello World!";
             // alternative option:
-            // document.querySelector("#main-title").innerHTML = "Hello world!";
+            document.querySelector("#main-title").innerHTML = "Hello world!";
             ```
 
             :bulb: an object can implement many different interfaces. This can be confusing. It's best to focus on the most commonly used interfaces instead - [Document](https://developer.mozilla.org/en-US/docs/Web/API/Document), [Element](https://developer.mozilla.org/en-US/docs/Web/API/Element), [Node](https://developer.mozilla.org/en-US/docs/Web/API/Node)
 
-            examples of common *interfaces*:
+    - Common *interfaces*:
 
-            ```HTML
-            <h1 id="main-title">Let's learn about the DOM!</h1>
-            <p class="firstParagraph">This is the first paragraph!</p>
-            <ul>
-                <li>Item 1</li>
-                <li class="list-item">Item 2</li>
-                <li class="list-item">Item 3</li>
-            </ul>
-            ```
+        ```HTML
+        <h1 id="main-title">Let's learn about the DOM!</h1>
+        <p class="firstParagraph">This is the first paragraph!</p>
+        <section>this is a section!</section>
+        <ul>
+            <li>Item 1</li>
+            <li class="list-item">Item 2</li>
+            <li class="list-item">Item 3</li>
+        </ul>
+        ```
 
-            - *methods*:
+        - selecting Elements:
 
             ```JavaScript
             document.getElementById("main-title"); //returns Element object whose id matches the specified string
 
-            document.getElementsByClassName("firstParagraph"); //returns array-like object (HTMLCollection) of all child elements that have the specified class name
+            document.getElementsByClassName("firstParagraph"); //returns array-like object (HTMLCollection) of all child Elements that have the specified class name
             document.getElementsByClassName("list-item");
 
-            document.getElementsByTagName("h1"); //returns array-like object (HTMLCollection) of all child elements that have the specified tag
+            document.getElementsByTagName("h1"); //returns array-like object (HTMLCollection) of all child Elements that have the specified tag
 
             document.querySelector("h1"); //returns first Element object that matches the specified CSS selector string
             document.querySelector("#main-title"); //returns same object as the one above
@@ -226,20 +227,60 @@
             document.querySelectorAll(".list-item"); //returns all Elements that match the specified CSS selector string, in an array-like object (NodeList)
             ```
 
-            - *property* manipulation:
+            :bulb: `querySelector` is more commonly used
+
+            :bulb: a NodeList is *static* meaning that the collection of nodes does not update automatically when the DOM changes whereas an HTMLCollection is *live* meaning that the nodes do update automatically
+
+        - manipulating Nodes:
 
             ```JavaScript
             const h1 = document.querySelector('h1');
             console.dir(h1); //returns the node's properties
             h1.textContent; //returns the Text node within h1
-            h1.textContent = "I'm changing the Text node!"; //change the Text node
+            h1.textContent = "I'm changing the Text node using JS!"; //change the Text node
             h1.id; //returns id
             h1.className; //returns className; currently empty
-            h1.className = "title"; //set class
+            h1.className = "new-class"; //set class
             h1.style.color = 'blue'; //set color of Text node to blue
             h1.style.backgroundColor = 'red'; //set color of background to red
             h1.getAttribute("id"); //returns value of specified attribute
-            h1.setAttribute("title", "setting an attribute!"); //sets the value of an attribute. If it already exists, the value is updated; otherwise a new attribute is added with the specified name and value
+            h1.setAttribute("new-atr", "new-atr-value"); //sets the value of an attribute. If it already exists, the value is updated; otherwise a new attribute is added with the specified name and value
+            ```
+
+        - adding/removing Elements:
+
+            ```JavaScript
+            const section = document.querySelector('section');
+            section.innerHTML = '<p>replacing content with a new paragraph</p>'; //replaces all HTML content inside an Element
+
+            section.insertAdjacentHTML('beforebegin', '<p>inserting content "beforebegin"</p>'); //inserts HTML at a specific position relative to an Element
+            section.insertAdjacentHTML('beforeend', '<p>inserting content "beforeend"</p>');
+            ```
+
+            :bulb: `innerHTML` re-pareses or replaces all content of an Element which can be inefficient for large DOM trees
+
+            :bulb: `innerAdjacentHTML` does not remove or replace existing content; it adds new content relative to the specified location (before, after, or inside at specific points). It does not re-parse, therefore preserving, the entire inner content of an Element which can be more efficient
+
+            :bulb: `innerAdjacentHTML` positions:
+
+            ![image48](/images/image48.png)
+
+            ```JavaScript
+            const newPara = document.createElement('p'); //create Element
+            section.append(newPara); //append new Element to section Element
+            newPara.textContent = 'new paragraph Element'; //create Text node in new paragraph Element
+            
+            section.before(newPara); //move the new paragraph Element before the section Element
+            // section.before(newPara);
+            // section.prepend(newPara);
+            // section.after(newPara);
+            // section.replaceWith(newPara);
+            // section.insertAdjacentElement('afterend', newPara);
+
+            const newPara2 = newPara.cloneNode(true); // clone node
+            newPara2.textContent = 'new paragraph Element 2';
+            newPara.append(newPara2);
+            newPara2.remove(); // remove node
             ```
 
     - **DOM traversal**:
@@ -249,7 +290,6 @@
             - **parent** node properties:
 
                 ```JavaScript
-                console.dir(h1); //returns the node's properties
                 h1.parentNode; //returns the parent node in the DOM tree
                 h1.parentElement; //returns the parent Element node in the DOM tree
                 h1.parentNode.parentNode; //returns the grandparent node in the DOM tree
@@ -300,9 +340,14 @@
 
     - Styling the **DOM**
 
-        - **CSS** (Cascading Style Sheets) is used to style and define the layout of web pages. For example, defining the font, size, color, and spacing of content
+        - the `style` property is used to apply inline styles directly to ELements programmatically (e.g. review previous examples on DOM manipulation)
 
-        - styles can also be applied inline using the `style` property (e.g. review previous examples on DOM manipulation)
+            ```JavaScript
+            h1.style.color = 'blue';
+            h1.style.backgroundColor = 'red';
+            ```
+
+        - **CSS** (Cascading Style Sheets) is used to style and define the layout of web pages. For example, defining the font, size, color, and spacing of content
 
             :bulb: inline styles take priority over **CSS**
 
@@ -338,6 +383,24 @@
 
         - **Selectors**:
 
+            ```HTML
+            <h2>Second header</h2>
+
+            <h3 id="thirdHeader">Third header</h3>
+
+            <p class="firstParagraph">This is the first paragraph!</p>
+
+            <p>
+                This is yet another paragraph. <span>Here is a span element.</span> It contains an <em>emphasized</em> element.
+
+                There's also a <a href="https://example.com">link</a>. <span>Here is another span element.</span>
+            </p>
+
+            <button class="joinBtn">Hover over me!</button>
+
+            <span>Here is yet another span element .. but it's not within the last paragraph</span>
+            ```
+
             - **type** - selects all Elements of a given type
 
                 ```CSS
@@ -356,6 +419,9 @@
                 .firstParagraph {
                     font-weight: bold;
                     color: #ff02fb;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                 }
                 ```
 
@@ -367,14 +433,18 @@
                 /* apply styles to Elements that have an id attribute called thirdHeader */
                 #thirdHeader {
                     color: #00ff3c;
-                    border: red 1px solid;
+                    width: 200px;
+                    height: 50px;
+                    padding: 10px;
+                    border: 2px solid black;
+                    margin: 20px;
                 }
                 ```
 
             - **attribute** - matches Elements based on a given attribute
 
                 ```CSS
-                /* apply styles to <a> elements with an href matching "https://example.org" */
+                /* apply styles to <a> Elements with an href matching "https://example.org" */
                 a[href="https://example.com"] {
                     font-size: 2em;
                 }
@@ -384,6 +454,17 @@
 
                 ```CSS
                 /* apply styles to a <button> element when hovering over */
+                .joinBtn {
+                    width: 10em;
+                    height: 5ex;
+                    background-color: gold;
+                    border: 2px solid firebrick;
+                    border-radius: 10px;
+                    font-weight: bold;
+                    color: black;
+                    cursor: pointer;
+                }
+
                 .joinBtn:hover {
                     background-color: rgb(228, 33, 33);
                 }

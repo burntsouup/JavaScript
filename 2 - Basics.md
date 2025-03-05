@@ -92,7 +92,7 @@
     user.name;  //outputs "Kyle"
     ```
 
-  :pushpin: objects explained in more detail [here](/8%20-%20Objects.md)
+  :pushpin: objects explained in more detail [here](/9%20-%20More%20on%20Objects.md)
 
 - **Arrays**: a list of data
 
@@ -100,7 +100,7 @@
   [1, 3, 5]
   ```
 
-  :pushpin: arrays explained in more detail [here](/6%20-%20Arrays.md)
+  :pushpin: arrays explained in more detail [here](/8%20-%20More%20on%20Arrays.md)
 
 - **undefined**, **null**, **NaN**
 
