@@ -106,7 +106,7 @@
             ];
             ```
 
-    - Methods to add/remove to an array
+    - Methods to manage arrays
 
         - `push()` - add to the end
 
@@ -159,12 +159,11 @@
 
             :bulb: `splice()` returns the removed element(s) as a net new array
 
-    - Other methods:
-
         - `slice()` - extracts a portion of an array
 
             ```JavaScript
             // array.slice(startIndex, endIndex);
+
             someHobbies = hobbies.slice(0,2);
             console.log(hobbies); // ["reading", "cooking", "swimming"]
             console.log(someHobbies); // ["reading", "cooking"]
@@ -180,6 +179,7 @@
 
             ```JavaScript
             // array1.concat(array2);
+
             const chores1 = ["dishes", "laundry"];
             const chores2 = ["vacuum", "dust"];
             const allChores = chores1.concat(chores2); // ["dishes", "laundry", "vacuum", "dust"]
@@ -188,6 +188,62 @@
             :bulb: returns a net new array
 
             :bulb: doesn't modify the existing arrays
+
+        - `indexOf()` - finds the position (index) of the **first** occurrence in an array
+
+            - `lastIndexOf()` - finds the position (index) of the **last** occurrence in an array
+
+            ```JavaScript
+            // array.indexOf(searchElement, fromIndex);
+
+            const numbers = [10, 20, 30, 40, 20];
+            console.log(numbers.indexOf(20)); // 1
+            console.log(numbers.indexOf(20, 2)); // 4
+            ```
+
+            :bulb: if the array has multiple values (e.g. "20"), then `indexOf()` will only return the first occurrence
+
+            ```JavaScript
+            // array.lastIndexOf(searchElement, fromIndex);
+
+            console.log(numbers.lastIndexOf(20)); // 4
+            ```
+
+            :bulb: `lastIndexOf()` search starts from the end of the array and moves towards the beginning
+
+            :bulb: `indexOf()` and `lastIndexOf()` return `-1` if no element is found
+
+            :bulb: `indexOf()` and `lastIndexOf()` return `-1` if working with objects stored in an array
+
+        - `find()` - searches an array based on a condition and returns the first matching element
+
+            ```JavaScript
+            // array.find(callback(element, index, array));
+
+            const users = [
+                { name: "Alice", age: 25 },
+                { name: "Bob", age: 30 },
+                { name: "Charlie", age: 35 }
+            ];
+            const user = users.find(user => user.age > 27); // { name: "Bob", age: 30 }
+            ```
+
+            :bulb: `callback` - function that tests each element
+
+            :bulb: returns `undefined` if no match is found
+
+        - `findIndex()` - searches an array based on a condition and returns the index of the first matching element
+
+            ```JavaScript
+            // array.findIndex(callback(element, index, array));
+
+            const nums = [10, 20, 30, 40, 50];
+            const index = nums.findIndex(num => num > 25); // 2
+            ```
+
+            :bulb: returns `undefined` if no match is found
+
+
 
 
 
