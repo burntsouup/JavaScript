@@ -1,5 +1,7 @@
 # Higher-order functions
 
+https://www.youtube.com/playlist?list=PLRqwX-V7Uu6aAEUqu96Newc-7qpuh-cxc
+
 :pushpin: refer to the app within the [Higher Order Functions folder](<Higher Order Functions>)
 
 - **Higher-order functions**

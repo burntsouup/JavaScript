@@ -102,125 +102,28 @@ const index = nums.findIndex(num => num > 25);
 //------------------------------------
 
 // example 1:
-let vals1 = [4, 6, 2, 8];
-//console.log("original vals1: " + vals1);
-
-function doubler(x) {
-    return x * 2;
-}
-
-// let doubledVals1 = vals1.map(doubler);
-// console.log(doubledVals1);
-
-vals1 = vals1.map(doubler); //override existing array
-//console.log("new vals1: " + vals1);
-
-//re-write using arrow function:
-// vals1 = vals1.map(x => x*2);
+const values = [4, 6, 2, 8];
+const valuesDoubled = values.map(x => x*2);
+// console.log(valuesDoubled);
 
 // example 2:
-let animals1 = [
-    { name: "Dobby", species: "fish" },
-    { name: "Dumbledore", species: "dog" },
-    { name: "Hagrid", species: "dog" },
-    { name: "Snape", species: "worm" },
-    { name: "Malfoy", species: "rabbit" },
-    { name: "Ron", species: "cat" },
+const pets1 = [
+    { owner: "Dobby", species: "fish" },
+    { owner: "Dumbledore", species: "dog" },
+    { owner: "Hagrid", species: "dog" },
+    { owner: "Snape", species: "worm" },
+    { owner: "Malfoy", species: "rabbit" },
+    { owner: "Ron", species: "cat" },
 ];
+const petOwners = pets1.map(x => x.owner);
+// console.log(petOwners);
 
-let names = animals1.map(x => x.name);
-//console.log(names);
-
-
-// reduce()
 //------------------------------------
-
-let vals2 = [6, 2, 3, 5];
-//console.log("original vals2: " + vals2);
-
-//how to do this otherwise:
-// let acc = 0;
-// for (let el of vals2) {
-//     acc += el;
-// }
-// console.log(sum);
-
-function sum (acc, val) {
-    //console.log(acc);
-    return acc + val;
-}
-
-//let answer1 = vals2.reduce(sum);
-let answer2 = vals2.reduce(sum, 10); //include initialValue argument
-//console.log(answer1);
-//console.log(answer2);
-
-//re-write using arrow function:
-// let answer2 = vals2.reduce((acc, val) => acc + val, 10);
-
-
-// filter()
-//------------------------------------
-
-// example 1:
-let vals3 = [8, 1, 4, 3];
-//console.log("original vals3: " + vals3);
-
-function isEven(x) {
-    if (x % 2 === 0) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-vals3 = vals3.filter(isEven);
-//console.log(vals3);
-
-//re-write using arrow function
-// vals3 = vals3.filter(x => x%2===0);
-
-// example 2:
-let animals2 = [
-    { name: "Dobby", species: "fish" },
-    { name: "Dumbledore", species: "dog" },
-    { name: "Hagrid", species: "dog" },
-    { name: "Snape", species: "worm" },
-    { name: "Malfoy", species: "rabbit" },
-    { name: "Ron", species: "cat" },
-];
-
-let dogs = animals2.filter(x => x.species === "dog");
-//console.log(dogs);
-
-
-// sort()
-//------------------------------------
-
-// example 1:
-let vals4 = [1, 9, 300, 7];
-//console.log("original vals4: " + vals4);
-
-function compare(a, b) {
-    return a - b;
-}
-
-vals4 = vals4.sort(compare);
-//console.log(vals4);
-
-// example 2:
-let words = ["ham", "turkey", "sandwich", "pie", "candy", "cookie"];
-//console.log("original: " + words);
-
-words.sort((a,b) => a.length - b.length);
-//console.log("sorted: " + words);
-
-
 // forEach()
 //------------------------------------
 
 // example 1:
-let animals3 = [
+let pets2 = [
     { name: "Dobby", species: "fish" },
     { name: "Dumbledore", species: "dog" },
     { name: "Hagrid", species: "dog" },
@@ -228,21 +131,126 @@ let animals3 = [
     { name: "Malfoy", species: "rabbit" },
     { name: "Ron", species: "cat" },
 ];
-
-//how to do this otherwise:
-// for(let i = 0; i < animals3.length; i++) {
-//     console.log(animals3[i]);
-// }
-
-// animals3.forEach(function(animals3) {
-//     console.log(animals3);
-// });
-
-//re-write using arrow function
-// animals3.forEach(animals3 => console.log(animals3));
+// pets2.forEach(x => console.log(x));
 
 // example 2:
-let vals5 = [1, 4, 9, 2];
+const digits = [1, 4, 9, 2];
+// const digitsDoubled = digits.forEach(x => console.log(x*2));
 
-// vals5 = vals5.forEach(x => console.log(x*2));
-//console.log(vals5);
+//------------------------------------
+// filter()
+//------------------------------------
+
+// example 1:
+const points = [8, 1, 4, 3];
+const evenPoints = points.filter(x => x%2===0);
+// console.log(evenPoints);
+
+// example 2:
+let pets3 = [
+    { name: "Dobby", species: "fish" },
+    { name: "Dumbledore", species: "dog" },
+    { name: "Hagrid", species: "dog" },
+    { name: "Snape", species: "worm" },
+    { name: "Malfoy", species: "rabbit" },
+    { name: "Ron", species: "cat" },
+];
+let dogs = pets3.filter(x => x.species === "dog");
+// console.log(dogs);
+
+//------------------------------------
+// sort()
+//------------------------------------
+
+// example 1:
+const fruitBowl = ["banana", "apple", "cherry"];
+fruitBowl.sort();
+// console.log(fruitBowl);
+
+// example 2:
+const food = ["ham", "turkey", "sandwich", "pie", "candy", "cookie"];
+food.sort((a,b) => a.length - b.length);
+// console.log(food);
+
+//------------------------------------
+// reduce()
+//------------------------------------
+
+// example 1:
+const scores = [6, 2, 3, 5];
+const result = scores.reduce((acc, val) => acc + val, 10);
+// console.log(result);
+
+// example 2:
+const randomNumbers = [10, 25, 18, 42, 5];
+const max = randomNumbers.reduce((acc, num) => (num > acc ? num : acc), );
+// console.log(max);
+
+//------------------------------------
+// split()
+//------------------------------------
+
+const text = "Hello world, welcome!";
+const words = text.split(" ");
+// console.log(words);
+
+const csv = "apple,sandwich,chocolate";
+const lunch = csv.split(",");
+// console.log(lunch);
+
+const string = "one two three four";
+const splitWords = string.split(" ", 2);
+// console.log(splitWords);
+
+//------------------------------------
+// join()
+//------------------------------------
+
+const wordArray = ["JavaScript", "is", "awesome"];
+const sentence = wordArray.join(" ");
+// console.log(sentence);
+
+const valuess = ["10", "20", "30"];
+// console.log(valuess.join(","));
+
+//------------------------------------
+// spread operator
+//------------------------------------
+
+const list = [1, 2, 3];
+const newList = [...list, 4, 5];
+// console.log(newList);
+
+const original = [10, 20, 30];
+const copy1 = original;
+const copy2 = [...original];
+// console.log(copy1);
+// console.log(copy2);
+// console.log(original === copy1);
+// console.log(original === copy2);
+
+const arr1 = [1, 2];
+const arr2 = [3, 4];
+const merged = [...arr1, ...arr2];
+// console.log(merged);
+
+const word = "hello";
+const letters = [...word];
+console.log(letters); // ["h", "e", "l", "l", "o"]
+
+//------------------------------------
+// destructuring an array
+//------------------------------------
+
+const numList = [10, 20, 30];
+const [a, b, c] = numList;
+// console.log(a); // 10
+// console.log(b); // 20
+// console.log(c); // 30
+
+// const a = numbers[0];
+// const b = numbers[1];
+// const c = numbers[2];
+
+
+
