@@ -228,7 +228,7 @@
 
     1. **Stack** - (*in addition to what was described above*) used to store **static** data
 
-        :bulb: **static** data - a fixed size known to the engine before compilation. This includes **Primitives** and **references** that point to objects and functions
+        :bulb: **static** data - a fixed size known to the engine before compilation. This includes **Primitives** and **References** that point to objects and functions
 
         :bulb: a fixed amount of memory is allocated for static data
 
@@ -250,13 +250,11 @@
 
   - Data Types:
 
-    1. **Primitive** - static data stored directly on the *stack*, where they are accessed from (e.g. string, number, boolean, null, undefined, symbol)
+    1. **Primitive** - static data stored directly on the *stack* where they are accessed from (e.g. strings, numbers, booleans, null, undefined, symbol). They are immutable and stored directly in memory by their value
 
-    2. **Reference** (or **Object**) - data stored in the *heap* and accessed by reference (array, function, and object)
+    2. **Reference** (or **Object**) - data stored in the *heap* (in memory) and accessed by reference (e.g. arrays, functions, and objects)
 
-        :bulb: this memory storage is great because it avoids duplicating data
-
-      :bulb: the *reference address* is stored on the *stack*, whereas the actual data is stored in memory (*heap*)
+      :bulb: the "reference" (memory address) is stored on the *stack*, whereas the actual data is stored in memory (*heap*)
 
     - Example:
 
