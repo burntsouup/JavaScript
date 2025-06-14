@@ -134,6 +134,67 @@ https://www.youtube.com/playlist?list=PLRqwX-V7Uu6YgpA3Oht-7B4NBQwFVe3pr
         console.log(account2.getBalance()); // 150
         ```
 
+        - **getters** & **setters** - special methods that allow internal data to be accessed or modified in a controlled way, while hiding the implementation details and protecting the object’s integrity.
+
+            - **getter** - let's you access a property, but not directly
+
+            - **setter** - let's you set or update a property, but with logic or validation
+
+            ```JavaScript
+            // without getters/setters:
+            class Person1 {
+            constructor(name) {
+                this.name = name;
+            }
+            }
+
+            const person1 = new Person1("Lisa");
+
+            console.log(person1.name); // "Lisa"
+            person1.name = "John";   // updates the name property directly
+            console.log(person1.name); // "John"
+            ```
+
+            :bulb: there's no control over what values are assigned!
+
+            ```JavaScript
+            // with getters/setters:
+            class Person2 {
+            constructor(name) {
+                this._name = name; // use "_" to indicate a private property
+            }
+
+            get name() { // getter method to access the private property
+                return this._name;
+            }
+
+            set name(newName) { // setter method to update the private property
+                // You can add validation logic here
+                if (newName.length > 0) {
+                this._name = newName;
+                } else {
+                console.log("Name must not be empty.");
+                }
+            }
+            }
+
+            const person2 = new Person2("Carl");
+
+            console.log(person2._name); // "Carl" 
+
+            console.log(person2.name); // calls the "get name()" method, returning "Carl"
+            person2.name = "Bob";      // calls the "set name(newName)" method, updating _name
+            console.log(person2.name); // "Bob"
+
+            person2.name = "";         // blocked by the setter logic, returning "Name must not be empty."
+            ```
+
+            :bulb: why not just use methods (e.g. `person.getName()`, `person.setName("Bob")`)? You could, but getters/setters feel more natural to read/write and it keeps the syntax clean. It even looks like you're accessing a property (e.g. `person2.name`), but, in-fact, you're actually running a method!
+
+            :bulb: `_name` does not make the property private, it's just a convention. It's a way of saying, "hey developers, don't touch this directly - treat it as internal." `person2._name` will still return a value. If you want true privacy, then use `#`
+
     - **inheritance**
+
+        
 
     - **polymorphism**
