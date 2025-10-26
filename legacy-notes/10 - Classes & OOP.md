@@ -14,7 +14,7 @@ https://www.youtube.com/playlist?list=PLRqwX-V7Uu6YgpA3Oht-7B4NBQwFVe3pr
 
     - builds flexible systems using **polymorphism** (different objects can respond differently to the same method)
 
-- Classes
+- **Classes**
 
     - a **class** is like a template for creating *objects*. It defines what an object will have (*properties*) and what the object can do (*methods*)
 
@@ -193,8 +193,120 @@ https://www.youtube.com/playlist?list=PLRqwX-V7Uu6YgpA3Oht-7B4NBQwFVe3pr
 
             :bulb: `_name` does not make the property private, it's just a convention. It's a way of saying, "hey developers, don't touch this directly - treat it as internal." `person2._name` will still return a value. If you want true privacy, then use `#`
 
-    - **inheritance**
+    - **inheritance** - allows a class to re-use and extend the features of another class.
 
-        
+        - use the `extends` keyword to create a subclass (a child) from a base class (a parent)
 
-    - **polymorphism**
+            ```JavaScript
+            // if Dog is a type of Animal, then it can inherit all the properties and methods of Animal
+            class Animal {
+                constructor(name) {
+                    this.name = name;
+                }
+
+                speak() {
+                    console.log(`${this.name} makes a noise.`);
+                }
+            }
+
+            class Dog extends Animal {
+                bark() {
+                    console.log(`${this.name} barks: Woof!`);
+                }
+            }
+
+            const myDog = new Dog("Oakley");
+
+            myDog.bark();  // Oakley barks: Woof!   (defined in Dog)
+            myDog.speak(); // Oakley makes a noise.  (inherited from Animal)
+            ```
+
+            :bulb: the child class inherits the constructor of the parent class
+
+            :bulb: you can override a method from the parent class by specifying the same method name in the child class
+
+        - use `super()` to call the parent class's constructor and to call parent methods you want to reuse. It allows you to build on the parent behavior, not just replace it.
+
+            ```JavaScript
+            class Animal {
+                constructor(name) {
+                    this.name = name;
+                }
+
+                speak() {
+                    console.log(`${this.name} makes a sound.`);
+                }
+            }
+
+            class Dog extends Animal {
+                constructor(name, breed) {
+                    super(name); // call parent constructor
+                    this.breed = breed; // build on parent behavior
+                }
+
+                speak() {
+                    super.speak(); // call parent method
+                    console.log(`${this.name} also barks.`);
+                }
+            }
+
+            const myDog = new Dog("Fido", "Labrador");
+            myDog.speak();
+                // Fido makes a sound.
+                // Fido also barks.
+            ```
+
+            :bulb: when you extend a class and define your own `constructor`, you must call `super()` before using `this`
+
+        - inheritance chain - a class can extend another class, which itself can extend another
+
+            ```JavaScript
+            class Animal3 {
+                eat() { console.log("eating"); }
+            }
+
+            class Mammal extends Animal3 {
+                sleep() { console.log("sleeping"); }
+            }
+
+            class Dog3 extends Mammal {
+                bark() { console.log("barking"); }
+            }
+
+            const myDog3 = new Dog3();
+            myDog3.eat();   // from Animal3
+            myDog3.sleep(); // from Mammal
+            myDog3.bark();  // from Dog3
+            ```
+
+    - **polymorphism** - allowing different classes to define methods with the same name, but each class provides its own behavior
+
+        ```JavaScript
+        class Vehicle {
+            speak() {
+                console.log("The vehicle makes a sound.");
+            }
+        }
+
+        class Subaru extends Vehicle {
+            speak() {
+                console.log("The Subaru goes vroom.");
+            }
+        }
+
+        class Lexus extends Vehicle {
+            speak() {
+                console.log("The Lexus goes whoosh.");
+            }
+        }
+
+        const vehicles = [new Subaru(), new Lexus()];
+
+        vehicles.forEach(vehicle => {
+            vehicle.speak(); // even though you're calling the same method name, each object responds differently
+        });
+            // The Subaru goes vroom.
+            // The Lexus goes whoosh.
+        ```
+
+        :bulb: recall, `speak()` from the parent class is overwritten

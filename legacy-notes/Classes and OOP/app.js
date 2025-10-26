@@ -16,7 +16,7 @@ const myCar = new Car("Toyota", "Corolla");
 
 // Example 2 --------------------
 
-class Dog {
+class Dogg {
     constructor(name, breed) {
         this.name = name;
         this.breed = breed;
@@ -27,7 +27,7 @@ class Dog {
     }
 }
 
-const dog1 = new Dog("Buddy", "Golden Retriever");
+const dog1 = new Dogg("Buddy", "Golden Retriever");
 // console.log(dog1);
 
 // dog1.describe();
@@ -118,7 +118,100 @@ person2.name = "Bob";
 
 // person2.name = "";
 
+// Example 5a --------------------
 
+class Animal1 {
+    constructor(name) {
+        this.name = name;
+    }
+
+    speak() {
+        console.log(`${this.name} makes a noise.`);
+    }
+}
+
+class Dog1 extends Animal1 {
+    bark() {
+        console.log(`${this.name} barks: Woof!`);
+    }
+}
+
+const myDog1 = new Dog1("Oakley");
+
+// myDog1.bark();
+// myDog1.speak();
+
+// Example 5b --------------------
+
+class Animal2 {
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(`${this.name} makes a sound.`);
+  }
+}
+
+class Dog2 extends Animal2 {
+  constructor(name, breed) {
+    super(name);
+    this.breed = breed;
+  }
+
+  speak() {
+    super.speak();
+    console.log(`${this.name} also barks.`);
+  }
+}
+
+const myDog2 = new Dog2("Fido", "Labrador");
+// myDog2.speak();
+
+// Example 5c --------------------
+
+class Animal3 {
+  eat() { console.log("eating"); }
+}
+
+class Mammal extends Animal3 {
+  sleep() { console.log("sleeping"); }
+}
+
+class Dog3 extends Mammal {
+  bark() { console.log("barking"); }
+}
+
+const myDog3 = new Dog3();
+// myDog3.eat();
+// myDog3.sleep();
+// myDog3.bark();
+
+// Example 6 --------------------
+
+class Vehicle {
+  speak() {
+    console.log("The vehicle makes a sound.");
+  }
+}
+
+class Subaru extends Vehicle {
+  speak() {
+    console.log("The Subaru goes vroom.");
+  }
+}
+
+class Lexus extends Vehicle {
+  speak() {
+    console.log("The Lexus goes whoosh.");
+  }
+}
+
+const vehicles = [new Subaru(), new Lexus()];
+
+// vehicles.forEach(vehicle => {
+//   vehicle.speak();
+// });
 
 
 
